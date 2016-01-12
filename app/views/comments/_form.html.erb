@@ -1,0 +1,10 @@
+<%= form_for([@listing, @comment], method: @method) do |f| %>
+  <p>
+    <%= f.text_area :input %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

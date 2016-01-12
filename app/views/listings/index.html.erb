@@ -1,0 +1,22 @@
+<div id="tag_cloud">
+	<%= form_tag tag_path, method: :get do %>
+	  <% tag_cloud Listing.tag_counts, %w[s m l] do |tag, css_class| %>
+	  	<% if @tag_array.nil? %>
+	  		<%= check_box_tag "#{tag.id}".to_sym, tag.name, false, {:multiple => true} %>
+	  		<%= label_tag (tag.name) %>
+	  	<% elsif @tag_array.include? tag.name %>
+	  		<%= check_box_tag "#{tag.id}".to_sym, tag.name, {:multiple => true} %>
+	  		<%= label_tag (tag.name) %>
+	  	<% end %>
+	  <% end %>
+	  <%= submit_tag value="Search", class: "btn btn-default" %>
+  <% end %>
+</div>
+<% @listings.each do |listing| %>
+	<h3>
+		<%= link_to listing.title, listing %>
+	</h3>
+	<p>
+		Tags: <%= raw listing.tag_list.map { |tag| link_to tag, tag_path(tag) }.join(', ') %>
+	</p>
+<% end %>

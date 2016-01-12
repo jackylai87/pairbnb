@@ -1,0 +1,12 @@
+// $('#new_reservation').remove();
+// $('#new_booking').show();
+$('#box').html('');
+$('#box').append('<%= flash[:booking_status] %>');
+
+
+
+// if ('<%= flash[:booking_success] %>') {
+// 	$('#box').append('<%= flash[:booking_success] %><%= link_to "Confirmation Receipt", listing_reservation_path(@listing.id, @reservation.id) %>');
+// } else if ('<%= flash[:booking_fail] %>') {
+// 	$('#box').append('<%= flash[:booking_fail] %>');
+// }

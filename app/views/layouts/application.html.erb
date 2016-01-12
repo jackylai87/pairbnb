@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PairBnb</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js" type="text/javascript"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"
+	type="text/javascript"></script>
+	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css"
+	rel="Stylesheet"type="text/css"/>
+	<script type="text/javascript"></script>
+  <%= csrf_meta_tags %>
+   <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+</head>
+<body>
+	<% if !current_user.present? %>
+		<strong>Sign In Here:  </strong>
+		<%= link_to "Sign In", new_user_session_path %> /
+		<%= link_to "Continue with Facebook", user_omniauth_authorize_path(:facebook), id: "sign_in"%><br>
+		<%= link_to "Sign Up Here", new_user_registration_path %>
+	<% end %>
+		<% if current_user %>
+			<div class="header">
+			<% if current_user.image.present? %>
+				<%= image_tag(current_user.image, size: "90x90", alt: "FB User Image")%>
+			<% end %> 
+				<%= image_tag(current_user.avatar)%>
+				<%= link_to current_user.name, user_path(current_user.id) %>
+				<%= link_to "Sign out", destroy_user_session_path, method: 'delete', data: { confirm: "#{current_user.name}, are you sure you want to sign out?" } %>
+			</div>
+		<% end %>
+		
+	<%= render 'shared/navbar' %>
+	<div class="body">
+	<% flash.each do |name, msg| %>
+	  <%= content_tag :div, msg, class: "flash #{name}"%>
+	<% end %>
+	<%= yield %>
+</div>
+
+</body>
+<div class="footer" style="position: fixed; right: 20px; bottom: 15px;">
+	<strong><em>Footer Here</em></strong>
+</div>
+
+</html>
