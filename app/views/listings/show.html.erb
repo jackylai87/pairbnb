@@ -54,12 +54,17 @@
 	<%= render @listing.comments %>
 </p>
 
-
-<h2>Add a comment:</h2>
+<% if !current_user.nil? %>
+	<h2>Add a comment:</h2>
 	
+	<p>
+		<%= render 'comments/form' %>
+	</p>
+<% else %>
 <p>
-	<%= render 'comments/form' %>
+	<strong>You must <%= link_to "sign in", new_user_session_path %> to write a comment</strong>
 </p>
+<% end %>
 
 <p>
 	<%= link_to "Edit Listing", edit_listing_path(@listing) %> |
