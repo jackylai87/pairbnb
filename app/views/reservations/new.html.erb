@@ -4,8 +4,8 @@
 
 <%= link_to "Back", listing_path(@listing) %>
 
-// <script>
-// 	braintree.setup("<%= @client_token %>", "dropin", {
-//   container: "payment-form"
-// });
-// </script>
+<script>
+	braintree.setup("<%= @client_token %>", "dropin", {
+  container: "payment-form"
+});
+</script>

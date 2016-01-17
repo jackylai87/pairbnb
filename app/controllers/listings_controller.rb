@@ -25,6 +25,7 @@ class ListingsController < ApplicationController
 		# render plain: params[:listing].inspect
 		@listing = current_user.listings.new(listing_params)
 		if @listing.save
+			Listing.reindex
 			redirect_to @listing, notice: "Listed"
 		else
 			render 'new'

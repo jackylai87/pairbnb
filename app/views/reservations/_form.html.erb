@@ -1,29 +1,29 @@
 <%= form_for [@listing, @reservation], id: "booking_form", remote: true do |f| %> 
 
-<table border="0" cellpadding="0" cellspacing="0">
-<tr>
-    <td>
-        From:
-    </td>
-    <td>
-      <%= f.text_field :check_in_date, id: "txtFrom" %>
-    </td>
-    <td>
-        &nbsp;&nbsp;
-    </td>
-    <td>
-        To:
-    </td>
-    <td>
-      <%= f.text_field :check_out_date, id: "txtTo" %>
-    </td>
-</tr>
-</table>
+  <table border="0" cellpadding="0" cellspacing="0">
+  <tr>
+      <td>
+          From:
+      </td>
+      <td>
+        <%= f.text_field :check_in_date, id: "txtFrom" %>
+      </td>
+      <td>
+          &nbsp;&nbsp;
+      </td>
+      <td>
+          To:
+      </td>
+      <td>
+        <%= f.text_field :check_out_date, id: "txtTo" %>
+      </td>
+  </tr>
+  </table>
 
-<div id="payment-form"></div>
+  <div id="payment-form"></div>
 
-  <p>
-	 <%= f.submit %>
-  </p>
+    <p>
+  	 <%= f.submit "Book" %>
+    </p>
 
 <% end %>

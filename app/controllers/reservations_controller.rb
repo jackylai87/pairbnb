@@ -32,7 +32,7 @@ class ReservationsController < ApplicationController
 			  payment_method_nonce: params[:payment_method_nonce])
 			if result.success?
 				@reservation.save
-				flash[:booking_status] = "Booking has been made successfully, TQ."
+				# flash[:booking_status] = "Booking has been made successfully, TQ."
 				# respond_to do |format|
 				# 	format.html { redirect_to @listing }
 				# 	format.js
@@ -40,11 +40,11 @@ class ReservationsController < ApplicationController
 				ReservationJob.perform_later(@customer, @host, @listing.id, @reservation.id)
 				redirect_to @listing
 			else
-			flash[:booking_status] = "Booking Unsuccessful, please try again."
-				respond_to do |format|
-					format.html { redirect_to @listing }
-					format.js
-				end
+				# flash[:booking_status] = "Booking Unsuccessful, please try again."
+					respond_to do |format|
+						format.html { redirect_to @listing }
+						format.js
+					end
 			end
 		end
 	end

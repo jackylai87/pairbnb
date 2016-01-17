@@ -1,2 +1,42 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<div id="main-page" class="carousel slide" data-ride="carousel">
+  <!-- Indicators -->
+  <ol class="carousel-indicators">
+    <li data-target="#main-page" data-slide-to="0" class="active"></li>
+    <li data-target="#main-page" data-slide-to="1"></li>
+    <li data-target="#main-page" data-slide-to="2"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <%= image_tag "http://blog.remax-malta.com/wp-content/uploads/2014/01/relaxing-at-home.jpg" %>
+      <div class="carousel-caption">
+        <%= link_to "Book Yours Now", listings_path, :class=>"btn btn-primary btn-lg" %>
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag "http://allofdesign.net/wp-content/uploads/2015/07/Luxury-house-with-open-architecture-7.jpg" %>
+      <div class="carousel-caption">
+      <%= link_to "Book Yours Now", listings_path, :class=>"btn btn-primary btn-lg" %>
+      </div>
+    </div>
+    <div class="item">
+      <%= image_tag "http://www.reallynicehouses.com/wp-content/uploads/IMG_1397.jpg" %>
+      <div class="carousel-caption">
+       <%= link_to "Book Yours Now", listings_path, :class=>"btn btn-primary btn-lg" %>
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#main-page" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="right carousel-control" href="#main-page" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

@@ -16,5 +16,6 @@
 !/log/.keep
 /tmp
 
-# Ignore application configuration
+# Ignore application and cloudinary configuration
 /config/application.yml
+/config/cloudinary.yml

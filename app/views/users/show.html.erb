@@ -1,23 +1,47 @@
-<h3>Hello, <%= current_user.name %></h3>
-<p>
-	Listings: 
-</p>
-<% current_user.listings.each_with_index do |listing, index| %>
-<%= index + 1 %>) 
-<%= link_to listing.title, listing_path(listing.id) %><br>
-<% end %>
+<div class="row">
+	<div class="col-md-3">
+		<div class="center">
+			<%= image_tag current_user.avatar, class: "avatar-full" if current_user.avatar.present? %>
+			<%= image_tag current_user.image + "?type=large", class: "avatar-full" if current_user.image.present? %>
+		</div>
+		<div class="panel panel-default">
+			<div class="panel-heading">Verification</div>
+			<div class="panel-body">
+				Email Address<br>
+				Phone Number
+			</div>
+		</div>
+	</div>
 
-<p>
-	Reservations: 
-</p>
-<% if flash[:destroy] %>
-	<p><%= flash[:destroy] %></p>
-<% end %>
+	<div class="col-md-9">
+		<% if flash[:destroy] %>
+			<p><%= flash[:destroy] %></p>
+		<% end %>
 
-<% current_user.reservations.each_with_index do |reservation, index| %>
-	<%= index + 1 %>) 
-	<%= reservation.check_in_date %> to 
-	<%= reservation.check_out_date %> @ 
-	<%= link_to reservation.listing.title, listing_path(reservation.listing.id) %> | 
-	<%= link_to "Reservation Page", listing_reservation_path(reservation.listing.id, reservation.id) %><br>
-<% end %>
+		<h2>Hello, <%= current_user.name %></h2>
+		<p>
+			Listings: 
+		</p>
+
+		<% current_user.listings.each_with_index do |listing, index| %>
+			<p>
+				<%= index + 1 %>) 
+				<%= link_to listing.title, listing_path(listing.id) %><br>
+			</p>
+		<% end %>
+
+		<p>
+			Reservations: 
+		</p>
+
+		<% current_user.reservations.each_with_index do |reservation, index| %>
+			<p>
+				<%= index + 1 %>) 
+				<%= reservation.check_in_date %> to 
+				<%= reservation.check_out_date %> @ 
+				<%= link_to reservation.listing.title, listing_path(reservation.listing.id) %> | 
+				<%= link_to "Reservation Page", listing_reservation_path(reservation.listing.id, reservation.id) %>
+			</p>
+		<% end %>
+	</div>
+</div>
