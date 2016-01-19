@@ -1,6 +1,19 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "toastr_rails";
 
 .avatar-full {
 	width: 100%;
+}
+
+.body {
+	padding-top: 50px;
+}
+
+.tagging {
+	padding-top: 20px;
+}
+
+nav {
+	padding-top: 5px;
 }

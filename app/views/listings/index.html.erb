@@ -1,16 +1,18 @@
-<div id="tag_cloud">
-	<%= form_tag tag_path, method: :get do %>
-	  <% tag_cloud Listing.tag_counts, %w[s m l] do |tag, css_class| %>
-	  	<% if @tag_array.nil? %>
-	  		<%= check_box_tag "#{tag.id}".to_sym, tag.name, false, {:multiple => true} %>
-	  		<%= label_tag (tag.name) %>
-	  	<% elsif @tag_array.include? tag.name %>
-	  		<%= check_box_tag "#{tag.id}".to_sym, tag.name, {:multiple => true} %>
-	  		<%= label_tag (tag.name) %>
-	  	<% end %>
+<div class="tagging">
+	<div id="tag_cloud">
+		<%= form_tag tag_path, method: :get do %>
+		  <% tag_cloud Listing.tag_counts, %w[s m l] do |tag, css_class| %>
+		  	<% if @tag_array.nil? %>
+		  		<%= check_box_tag "#{tag.id}".to_sym, tag.name, false, {:multiple => true} %>
+		  		<%= label_tag (tag.name) %>
+		  	<% elsif @tag_array.include? tag.name %>
+		  		<%= check_box_tag "#{tag.id}".to_sym, tag.name, {:multiple => true} %>
+		  		<%= label_tag (tag.name) %>
+		  	<% end %>
+		  <% end %>
+		  <%= submit_tag value="Tagging Search", class: "btn btn-default" %>
 	  <% end %>
-	  <%= submit_tag value="Search", class: "btn btn-default" %>
-  <% end %>
+	</div>
 </div>
 <% @listings.each do |listing| %>
 	<h3>

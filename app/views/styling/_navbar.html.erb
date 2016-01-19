@@ -1,0 +1,84 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">PairBnB</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Listings <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <p><center><strong>Malaysia</strong></p></center></p>
+              <li><a href="/search?utf8=✓&term=selangor&commit=Search">Selangor</a></li>
+              <li><a href="/search?utf8=✓&term=kuala+lumpur&commit=Search">Kuala Lumpur</a></li>
+              <li><a href="/search?utf8=✓&term=melaka&commit=Search">Melaka</a></li>
+              <li><a href="/search?utf8=✓&term=pahang&commit=Search">Pahang</a></li>
+              <li><a href="/search?utf8=✓&term=kelantan&commit=Search">Kelantan</a></li>
+              <li><a href="/search?utf8=✓&term=johor&commit=Search">Johor</a></li>
+              <li><a href="/search?utf8=✓&term=perak&commit=Search">Perak</a></li>
+              <li><a href="/search?utf8=✓&term=kedah&commit=Search">Kedah</a></li>
+              <li><a href="/search?utf8=✓&term=terengganu&commit=Search">Terengganu</a></li>
+              <li><a href="/search?utf8=✓&term=penang&commit=Search">Penang</a></li>
+              <li><a href="/search?utf8=✓&term=negeri+sembilan&commit=Search">Negeri Sembilan</a></li>
+              <li><a href="/search?utf8=✓&term=perlis&commit=Search">Perlis</a></li>
+              <li><a href="/search?utf8=✓&term=sabah&commit=Search">Sabah</a></li>
+              <li><a href="/search?utf8=✓&term=sarawak&commit=Search">Sarawak</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="/search?utf8=✓&term=malaysia&commit=Search">Entire Malaysia</a></li>
+              <li role="separator" class="divider"></li>
+              <p><center><strong>Singapore</strong></p></center></p>
+              <li role="separator" class="divider"></li>
+              <li><%= link_to "All Listings", listings_path %></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div>
+          <%= render 'listings/search' %>
+        </div>
+
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to "Hosting", new_listing_path if current_user.present? %></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false", style="padding-top: 11px;">
+              <% if current_user.present? && current_user.image.present? %>
+                <%= facebook_profile_image_tag(avatar_url(current_user), :fetch_format=>:png, :width=>30, :height=>30, :crop=>:thumb, :radius=>:max, :type=>"fetch", alt: "FB User Image") %> <%= current_user.name %>
+              <% elsif current_user.present? %>
+                <%= cl_image_tag(avatar_url(current_user), :fetch_format=>:png, :width=>30, :height=>30, :crop=>:thumb, :radius=>:max) %> <%= current_user.name %>
+              <% else %>
+                <strong>Sign In</strong>
+              <% end %> 
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+            <% if current_user.present? %>
+              <li><%= link_to "User Profile", user_path(current_user.id) %></li>
+              <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+            <% else %>
+              <li><%= link_to "Sign In", new_user_session_path %></li>
+              <li><%= link_to "Continue with Facebook", user_omniauth_authorize_path(:facebook), id: "sign_in" %></li>
+            <% end %>
+              <li role="separator" class="divider"></li>
+              <li>
+                <% if current_user.present? %>
+                  <%= link_to "Sign out", destroy_user_session_path, method: 'delete', data: { confirm: "#{current_user.name}, are you sure you want to sign out?" } %>
+                <% else %>
+                  <%= link_to "Sign Up", new_user_registration_path %>
+                <% end %>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </div>
+</nav>

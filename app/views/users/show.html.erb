@@ -1,8 +1,13 @@
 <div class="row">
 	<div class="col-md-3">
 		<div class="center">
-			<%= image_tag current_user.avatar, class: "avatar-full" if current_user.avatar.present? %>
-			<%= image_tag current_user.image + "?type=large", class: "avatar-full" if current_user.image.present? %>
+			<% if current_user.avatar.present? %>
+				<%= cl_image_tag(avatar_url(current_user), class: "avatar-full") %>
+			<% elsif current_user.image.present? %>
+				<%= facebook_profile_image_tag(avatar_url(current_user), class: "avatar-full") %>
+			<% else %>
+				<%= cl_image_tag("blank_avatar_hhrxwn.png", class: "avatar-full") %>
+			<% end %>
 		</div>
 		<div class="panel panel-default">
 			<div class="panel-heading">Verification</div>
@@ -14,10 +19,6 @@
 	</div>
 
 	<div class="col-md-9">
-		<% if flash[:destroy] %>
-			<p><%= flash[:destroy] %></p>
-		<% end %>
-
 		<h2>Hello, <%= current_user.name %></h2>
 		<p>
 			Listings: 

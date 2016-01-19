@@ -43,6 +43,9 @@ gem 'gemoji-parser'
 gem 'acts-as-taggable-on'
 gem 'foreman'
 
+# To show messages in js
+gem 'toastr_rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
