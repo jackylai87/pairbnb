@@ -40,9 +40,10 @@ class ListingsController < ApplicationController
 
 	def update
 		if @listing.update(listing_params)
+			Listing.reindex
 			redirect_to @listing
 		else
-			render :listing
+			render "new"
 		end
 	end
 

@@ -46,7 +46,7 @@
 
 	<p>
 		<%= f.label :price, "Price Per Night" %><br>
-		<%= f.text_field :price %>
+		<%= f.number_field :price, min: 1 %>
 	</p>
 
 	<p>
@@ -66,14 +66,10 @@
 	</p>
 
 	<p>
-    <%= f.label :image do %>
-      <%= f.file_field :images, multiple: true %>
-      <%= f.hidden_field :images_cache %>
-     <% end %>
+		<%= f.label :images, "Images (Hold Ctrl / Shift to select multiple images)" %><br>
+    <%= f.file_field :images, multiple: true %>
+    <%= f.hidden_field :images_cache %>
 	</p>
-
-	<p>
-
 
 	<p>
 		<%= f.submit %>

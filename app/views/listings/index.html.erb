@@ -22,3 +22,7 @@
 		Tags: <%= raw listing.tag_list.map { |tag| link_to tag, tag_path(tag) }.join(', ') %>
 	</p>
 <% end %>
+
+<% if @listings.blank? %>
+	<h3><%= @error %></h3>
+<% end%>

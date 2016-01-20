@@ -4,7 +4,7 @@
 
 <p>
 	<% @listing.images.each do |image| %>
-	<%= image_tag image %>
+	<%= cl_image_tag(image) %>
 	<% end %>
 </p>
 

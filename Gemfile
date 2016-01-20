@@ -27,6 +27,7 @@ gem 'figaro'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+# Carrierwave pointing to master branch to enable multiple upload.
 gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'cloudinary'
 gem 'mini_magick'
