@@ -13,7 +13,7 @@ class ListingsController < ApplicationController
 			end
 			@listings = Listing.tagged_with(@tag_array, :any => true)
 		else
-			@listings = Listing.all
+			@listings = Listing.paginate(:page => params[:page], :per_page => 3).order('created_at DESC')
 		end
 	end
 
@@ -75,7 +75,8 @@ class ListingsController < ApplicationController
 
 	private
 		def listing_params
-			params.require(:listing).permit(:title, :home_type, :room_type, :accomodate, :location, :latitude, :longitude, :description, :price, {images: []}, :remove_images, :remote_image_url, :tag_list)
+			params.require(:listing).permit(:title, :home_type, :room_type, :accomodate, :location, :latitude, :longitude, :description, :price, 
+				{images: []}, :remove_images, :remote_image_url, :tag_list, :sub_image_one, :sub_image_two, :remove_sub_image_one, :remove_sub_image_two)
 		end
 
 		def set_listing

@@ -43,6 +43,7 @@ gem 'searchkick'
 gem 'gemoji-parser'
 gem 'acts-as-taggable-on'
 gem 'foreman'
+gem 'will_paginate'
 
 # To show messages in js
 gem 'toastr_rails'

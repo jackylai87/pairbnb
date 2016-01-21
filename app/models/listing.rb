@@ -1,5 +1,7 @@
 class Listing < ActiveRecord::Base
 	mount_uploaders :images, ImageUploader
+	mount_uploader :sub_image_one, ImageUploader
+	mount_uploader :sub_image_two, ImageUploader
 	validates :title, :home_type, :room_type, :accomodate, :location, presence: true
 	belongs_to :user
 	has_many :comments, dependent: :destroy

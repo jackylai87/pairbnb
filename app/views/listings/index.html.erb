@@ -13,16 +13,29 @@
 		  <%= submit_tag value="Tagging Search", class: "btn btn-default" %>
 	  <% end %>
 	</div>
+	</div>
+<div class="container">
+	<div class="row">
+		<% @listings.each do |listing| %>
+			<div class="col-md-4">
+					<%= cl_image_tag listing.sub_image_one, :width=>300, :height=>300, :crop=>:fill %>
+					<h3>
+						<%= link_to listing.title, listing %>
+					</h3>
+				Tags: <%= raw listing.tag_list.map { |tag| link_to tag, tag_path(tag) }.join(', ') %>
+			</div>
+		<% end %>
+	</div>
 </div>
-<% @listings.each do |listing| %>
-	<h3>
-		<%= link_to listing.title, listing %>
-	</h3>
-	<p>
-		Tags: <%= raw listing.tag_list.map { |tag| link_to tag, tag_path(tag) }.join(', ') %>
-	</p>
-<% end %>
-
+<br>
 <% if @listings.blank? %>
 	<h3><%= @error %></h3>
 <% end%>
+<center>
+	<div class="digg_pagination">
+	  <div class="page_info">
+	    <%= page_entries_info @listings %>
+	  </div>
+	  <%= will_paginate @listings %>
+	</div>
+</center>

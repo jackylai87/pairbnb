@@ -55,20 +55,33 @@
 	</p>
 
 	<p>
-		<% if @listing.images.present? %>
-    	<% @listing.images.each do |image| %>
-				<%= image_tag image %>
-	    	<%= f.label :remove_image do %>
-	    		<%= f.check_box :remove_images %>
-	    	<% end %>
-  		<% end %>
+		<% if @listing.sub_image_one.present? %>
+			<%= cl_image_tag @listing.sub_image_one, :width=>50, :height=>50, :crop=>:fill %>
+    	<%= f.label :remove_image %>
+  		<%= f.check_box :remove_sub_image_one %>
+   	<% end %>
+
+   	<% if @listing.sub_image_two.present? %>
+			<%= cl_image_tag @listing.sub_image_two, :width=>50, :height=>50, :crop=>:fill %>
+    	<%= f.label :remove_image %>
+  		<%= f.check_box :remove_sub_image_two %>
    	<% end %>
 	</p>
 
 	<p>
 		<%= f.label :images, "Images (Hold Ctrl / Shift to select multiple images)" %><br>
-    <%= f.file_field :images, multiple: true %>
+    <%= f.file_field :sub_image_one, multiple: true %>
     <%= f.hidden_field :images_cache %>
+	</p>
+
+	<p>
+		<%= f.label :sub_image_one %>
+		<%= f.file_field :sub_image_one %>
+	</p>
+
+	<p>
+		<%= f.label :sub_image_two %>
+		<%= f.file_field :sub_image_two %>	
 	</p>
 
 	<p>
