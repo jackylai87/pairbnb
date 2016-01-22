@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20160121061607) do
     t.integer  "user_id"
     t.string   "title"
     t.string   "price"
-    t.string   "image"
+    t.string   "main_image"
     t.json     "images"
     t.float    "latitude"
     t.float    "longitude"

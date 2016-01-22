@@ -18,7 +18,11 @@
 	<div class="row">
 		<% @listings.each do |listing| %>
 			<div class="col-md-4">
-					<%= cl_image_tag listing.sub_image_one, :width=>300, :height=>300, :crop=>:fill %>
+				<% if listing.read_attribute(:main_image).nil? %>
+        	<%= cl_image_tag ("no-image-found.jpg"), :width=>300, :height=>300, :crop=>:scale %>
+        <% else %>
+					<%= cl_image_tag listing.main_image, :width=>300, :height=>300, :crop=>:fill %>
+				<% end %>
 					<h3>
 						<%= link_to listing.title, listing %>
 					</h3>

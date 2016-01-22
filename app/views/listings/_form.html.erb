@@ -55,33 +55,48 @@
 	</p>
 
 	<p>
-		<% if @listing.sub_image_one.present? %>
+		<%= f.label :main_image %>
+		<% if @listing.main_image.present? %>
+			<p>
+					<strong>Update / Remove Image</strong>
+			</p>
+			<%= f.file_field :main_image %>
+			<%= cl_image_tag @listing.main_image, :width=>50, :height=>50, :crop=>:fill %>
+	  	<%= f.label :remove_image %>
+			<%= f.check_box :remove_main_image %>
+		<% else %>
+			<%= f.file_field :main_image %>
+		<% end %>
+ 	</p>
+
+ 	<p>
+ 		<%= f.label :sub_image_one, "Sub Image 1" %>
+ 		<% if @listing.sub_image_one.present? %>
+ 			<p>
+ 				<strong>Update / Remove Image</strong>
+ 			</p>
+			<%= f.file_field :sub_image_one %>
 			<%= cl_image_tag @listing.sub_image_one, :width=>50, :height=>50, :crop=>:fill %>
     	<%= f.label :remove_image %>
   		<%= f.check_box :remove_sub_image_one %>
+  	<% else %>
+  		<%= f.file_field :sub_image_one %>
    	<% end %>
+  </p>
 
-   	<% if @listing.sub_image_two.present? %>
+  <p>
+		<%= f.label :sub_image_two %>
+	 	<% if @listing.sub_image_two.present? %>
+ 			<p>
+				<strong>Update / Remove Image</strong>
+			</p>
+ 			<%= f.file_field :sub_image_two %>
 			<%= cl_image_tag @listing.sub_image_two, :width=>50, :height=>50, :crop=>:fill %>
     	<%= f.label :remove_image %>
   		<%= f.check_box :remove_sub_image_two %>
+  	<% else %>
+  		<%= f.file_field :sub_image_two %>
    	<% end %>
-	</p>
-
-	<p>
-		<%= f.label :images, "Images (Hold Ctrl / Shift to select multiple images)" %><br>
-    <%= f.file_field :sub_image_one, multiple: true %>
-    <%= f.hidden_field :images_cache %>
-	</p>
-
-	<p>
-		<%= f.label :sub_image_one %>
-		<%= f.file_field :sub_image_one %>
-	</p>
-
-	<p>
-		<%= f.label :sub_image_two %>
-		<%= f.file_field :sub_image_two %>	
 	</p>
 
 	<p>

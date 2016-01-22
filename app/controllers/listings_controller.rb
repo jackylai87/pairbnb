@@ -78,7 +78,7 @@ class ListingsController < ApplicationController
 	private
 		def listing_params
 			params.require(:listing).permit(:title, :home_type, :room_type, :accomodate, :location, :latitude, :longitude, :description, :price, 
-				{images: []}, :remove_images, :remote_image_url, :tag_list, :sub_image_one, :sub_image_two, :remove_sub_image_one, :remove_sub_image_two)
+				{images: []}, :remove_images, :remote_image_url, :tag_list, :main_image, :sub_image_one, :sub_image_two, :remove_main_image, :remove_sub_image_one, :remove_sub_image_two)
 		end
 
 		def set_listing

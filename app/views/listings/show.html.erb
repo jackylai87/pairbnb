@@ -9,22 +9,34 @@
   <!-- Wrapper for slides -->
   <div class="carousel-inner" role="listbox">
     <div class="item active">
-      <%= cl_image_tag @listing.sub_image_one, :width=>1500, :height=>700, :crop=>:scale %>
-      <div class="carousel-caption">
-        <%= link_to "Book Yours Now", listings_path, :class=>"btn btn-primary btn-lg" %>
-      </div>
+      <% if @listing.read_attribute(:main_image).nil? %>
+        <%= cl_image_tag ("no-image-found.jpg"), :width=>1500, :height=>700, :crop=>:scale %>
+        <div class="carousel-caption">
+          <%= link_to "Upload Here", edit_listing_path(@listing), :class=>"btn btn-primary btn-lg" %>
+        </div>
+      <% else %>
+        <%= cl_image_tag @listing.main_image, :width=>1500, :height=>700, :crop=>:scale %>
+      <% end %>
     </div>
     <div class="item">
-      <%= cl_image_tag @listing.sub_image_two, :width=>1500, :height=>700, :crop=>:scale %>
-      <div class="carousel-caption">
-      <%= link_to "Book Yours Now", listings_path, :class=>"btn btn-primary btn-lg" %>
-      </div>
+      <% if @listing.read_attribute(:sub_image_one).nil? %>
+        <%= cl_image_tag ("no-image-found.jpg"), :width=>1500, :height=>700, :crop=>:scale %>
+        <div class="carousel-caption">
+          <%= link_to "Upload Here", edit_listing_path(@listing), :class=>"btn btn-primary btn-lg" %>
+        </div>
+      <% else %>
+        <%= cl_image_tag @listing.sub_image_one, :width=>1500, :height=>700, :crop=>:scale %>
+      <% end %>
     </div>
     <div class="item">
-      <%= cl_image_tag("IMG_1397_whdbjy.jpg", :width=>1500, :height=>700, :crop=>:scale) %>
-      <div class="carousel-caption">
-       <%= link_to "Book Yours Now", listings_path, :class=>"btn btn-primary btn-lg" %>
-      </div>
+     <% if @listing.read_attribute(:sub_image_two).nil? %>
+        <%= cl_image_tag ("no-image-found.jpg"), :width=>1500, :height=>700, :crop=>:scale %>
+        <div class="carousel-caption">
+          <%= link_to "Upload Here", edit_listing_path(@listing), :class=>"btn btn-primary btn-lg" %>
+        </div>
+      <% else %>
+        <%= cl_image_tag @listing.sub_image_two, :width=>1500, :height=>700, :crop=>:scale %>
+      <% end %>
     </div>
   </div>
 
