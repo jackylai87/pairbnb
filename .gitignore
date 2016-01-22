@@ -19,3 +19,6 @@
 # Ignore application and cloudinary configuration
 /config/application.yml
 /config/cloudinary.yml
+
+# Ignore byebug history
+/.byebug_history
