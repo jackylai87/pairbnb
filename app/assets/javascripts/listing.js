@@ -1,3 +1,3 @@
-# $(document).ready(function(){
-# 	$('input[type=checkbox]').removeAttr('checked');
-# });
+// # $(document).ready(function(){
+// # 	$('input[type=checkbox]').removeAttr('checked');
+// # });

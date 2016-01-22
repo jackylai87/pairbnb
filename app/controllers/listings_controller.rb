@@ -11,7 +11,9 @@ class ListingsController < ApplicationController
 					@tag_array << value
 				end
 			end
-			@listings = Listing.tagged_with(@tag_array, :any => true)
+			@listings = Listing.tagged_with(params.first(99999), :any => true).paginate(:page => params[:page], :per_page => 3).order('created_at DESC')
+		elsif params[:tag]
+			@listings = Listing.tagged_with(params[:tag], :any => true).paginate(:page => params[:page], :per_page => 3).order('created_at DESC')
 		else
 			@listings = Listing.paginate(:page => params[:page], :per_page => 3).order('created_at DESC')
 		end

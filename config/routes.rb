@@ -5,8 +5,8 @@ Rails.application.routes.draw do
 	end
   root 'home#index'
   get '/search', to: 'listings#search'
-  get 'tags', to: 'listings#index', as: :tag
-
+  get 'tags/:tag', to: 'listings#index', as: :tag
+  get 'tags', to: 'listings#index', as: :tags
 
   resources :listings do
   	resources :comments
