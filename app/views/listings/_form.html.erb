@@ -45,6 +45,11 @@
 	</p>
 
 	<p>
+		<%= f.label :country %><br>
+		<%= select(:listing, :country, [["Malaysia"], ["Singapore"]]) %>
+	</p>
+
+	<p>
 		<%= f.label :price, "Price Per Night" %><br>
 		<%= f.number_field :price, min: 1 %>
 	</p>

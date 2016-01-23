@@ -16,12 +16,15 @@
 
 <div class="container">
 	<div class="row">
+		<% if @listings.blank? %>
+			<h3><%= @error %></h3>
+		<% end %>
 		<% @listings.each do |listing| %>
 			<div class="col-md-4">
 				<% if listing.read_attribute(:main_image).nil? %>
-        	<%= cl_image_tag ("no-image-found.jpg"), :width=>300, :height=>300, :crop=>:scale %>
+        	<%= link_to (cl_image_tag ("no-image-found.jpg"), :width=>300, :height=>300, :crop=>:scale), listing %>
         <% else %>
-					<%= cl_image_tag listing.main_image, :width=>300, :height=>300, :crop=>:fill %>
+					<%= link_to (cl_image_tag listing.main_image, :width=>300, :height=>300, :crop=>:fill), listing %>
 				<% end %>
 					<h3>
 						<%= link_to listing.title, listing %>
@@ -32,9 +35,7 @@
 	</div>
 </div>
 <br>
-<% if @listings.blank? %>
-	<h3><%= @error %></h3>
-<% end%>
+
 <center>
 	<div class="digg_pagination">
 	  <div class="page_info">

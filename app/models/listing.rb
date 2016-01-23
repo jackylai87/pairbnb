@@ -3,7 +3,7 @@ class Listing < ActiveRecord::Base
 	mount_uploader :main_image, ImageUploader
 	mount_uploader :sub_image_one, ImageUploader
 	mount_uploader :sub_image_two, ImageUploader
-	validates :title, :home_type, :room_type, :accomodate, :location, :main_image, :sub_image_one, :sub_image_two, presence: true
+	validates :title, :home_type, :room_type, :accomodate, :location, :main_image, :sub_image_one, :sub_image_two, :country, presence: true
 	belongs_to :user
 	has_many :comments, dependent: :destroy
 	has_many :reservations, dependent: :destroy
@@ -11,5 +11,5 @@ class Listing < ActiveRecord::Base
 	after_validation :geocode
 	acts_as_taggable
 	
-	searchkick match: :word_start, searchable: [:location]
+	searchkick match: :word_start, searchable: [:location, :title, :country]
 end

@@ -3,7 +3,7 @@ class ListingsController < ApplicationController
 
 	def index
 		if params[:search].present?
-			@listings = Listing.near(params[:search])
+			@listings = Listing.near(params[:search]).paginate(:page => params[:page], :per_page => 3).order('created_at DESC')
 		elsif params.keys.any? {|key| key.to_s.match(/\b\d/)}
 			@tag_array = []
 			params.each do |key,value|
@@ -67,9 +67,9 @@ class ListingsController < ApplicationController
 
 			# when user key in things
 			format.json do
-				@location = Listing.search(params[:term], fields: ["location"], mispellings: {below: 5})
+				@location = Listing.search(params[:term], fields: ["location", "title", "country"], mispellings: {below: 5})
 				@location = @location.map(&:location)
-		
+				
 				render json: @location
 			end
 		end
@@ -78,7 +78,7 @@ class ListingsController < ApplicationController
 	private
 		def listing_params
 			params.require(:listing).permit(:title, :home_type, :room_type, :accomodate, :location, :latitude, :longitude, :description, :price, 
-				{images: []}, :remove_images, :remote_image_url, :tag_list, :main_image, :sub_image_one, :sub_image_two, :remove_main_image, :remove_sub_image_one, :remove_sub_image_two)
+				{images: []}, :remove_images, :remote_image_url, :tag_list, :main_image, :sub_image_one, :sub_image_two, :remove_main_image, :remove_sub_image_one, :remove_sub_image_two, :country)
 		end
 
 		def set_listing

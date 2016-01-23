@@ -44,22 +44,22 @@
     <!-- Three columns of text below the carousel -->
     <div class="row">
       <div class="col-lg-4">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna.</p>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <%= cl_image_tag("petronas_twin_towers_jsqklk.jpg", :width => 140, :height => 140, :class => "img-circle" ) %>
+        <h2>Kuala Lumpur</h2>
+        <p>Kuala Lumpur is the perfect destination for a short visit or stopover, but many tourists are drawn back to the great city during their travels through Malaysia.</p>
+        <p><a class="btn btn-default" href="/search?utf8=✓&term=kuala+lumpur&commit=Search" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-        <h2>Heading</h2>
-        <p>Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh.</p>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <%= cl_image_tag("beach_lrgfci.jpg", :width => 140, :height => 140, :class => "img-circle" ) %>
+        <h2>Pulau Redang</h2>
+        <p>Redang Island is one of the largest islands off the east coast of Peninsular Malaysia that is famous for its crystal clear waters, white sandy beaches.</p>
+        <p><a class="btn btn-default" href="/search?utf8=✓&term=terengganu&commit=Search" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
-        <img class="img-circle" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Generic placeholder image" width="140" height="140">
-        <h2>Heading</h2>
-        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        <%= cl_image_tag("be9c143927ac8825016014c587f03c56_qol8sh.jpg", :width => 140, :height => 140, :class => "img-circle" ) %>
+        <h2>Singapore</h2>
+        <p>Singapore, and often referred to as the Lion City, the Garden City, and the Red Dot, is a leading global city in Southeast Asia and the world's only island city-state.</p>
+        <p><a class="btn btn-default" href="/search?utf8=✓&term=singapore&commit=Search" role="button">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
     </div><!-- /.row -->
 
@@ -70,11 +70,11 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <h2 class="featurette-heading">Kuala Lumpur, Malaysia. <span class="text-muted">See for yourself.</span></h2>
+        <p class="lead">The Petronas Twin Towers in Kuala Lumpur were the world’s tallest buildings before being surpassed in 2004 by Taipei 101. However, the towers are still the tallest twin buildings in the world. The 88-floor towers are constructed largely of reinforced concrete, with a steel and glass facade designed to resemble motifs found in Islamic art, a reflection of Malaysia’s Muslim religion. The Petronas Twin Towers feature a sky bridge between the two towers on the 41st and 42nd floors.</p>
       </div>
       <div class="col-md-5">
-        <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        <%= cl_image_tag("petronas_twin_towers_jsqklk.jpg", :class => "featurette-image img-responsive center-block", data: { src: "holder.js/500x500/auto"} ) %>
       </div>
     </div>
 
@@ -82,11 +82,11 @@
 
     <div class="row featurette">
       <div class="col-md-7 col-md-push-5">
-        <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <h2 class="featurette-heading">Pulau Redang, Malaysia. <span class="text-muted">It'll blow your mind.</span></h2>
+        <p class="lead">This is one of the largest of Malaysia’s islands and is located off the east coast of the country. This is a real paradise, with distinctive white sand and the cleanest of waters. The surrounding coral reefs are ideal for snorkelling and the abundance of tropical fish, baby sharks and other sea creatures make for terrific diving. Pulau Redang is a superb holiday destination.</p>
       </div>
       <div class="col-md-5 col-md-pull-7">
-        <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        <%= cl_image_tag("beach_lrgfci.jpg", :class => "featurette-image img-responsive center-block", data: { src: "holder.js/500x500/auto"} ) %>
       </div>
     </div>
 
@@ -94,11 +94,11 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <h2 class="featurette-heading">Singapore. <span class="text-muted">Stunning place.</span></h2>
+        <p class="lead">The Merlion is more than just a statue. It’s a mythical symbol of Singapore, a place to take in some incredible views, and of course, is the city’s most sought after photo-op. The term ‘must see’ will forever be used to describe the Merlion, with the iconic statue attracting over a million visitors per year. Although the 70-tonne, water-spouting Merlion is the main focal point, you can also relax on the terraced seating area, which boasts some great views across the water to Marina Bay Sands.</p>
       </div>
       <div class="col-md-5">
-        <img class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        <%= cl_image_tag("be9c143927ac8825016014c587f03c56_qol8sh.jpg", :class => "featurette-image img-responsive center-block", data: { src: "holder.js/500x500/auto"} ) %>
       </div>
     </div>
 
