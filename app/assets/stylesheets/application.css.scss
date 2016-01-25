@@ -37,7 +37,7 @@ nav {
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .form-style .field:focus {
@@ -75,6 +75,34 @@ nav {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
+
+.form-style input[type="number"] {
+  width: 190px;
+  padding: 5px;
+  height: 35px;
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-style textarea {
+  padding: 10px;
+  height: 100px;
+  width: 190px;
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-style select {
+  width: 190px;
+  height: 35px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
 
 .digg_pagination {
   background: #eee;
