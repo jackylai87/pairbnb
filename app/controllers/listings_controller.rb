@@ -67,8 +67,8 @@ class ListingsController < ApplicationController
 
 			# when user key in things
 			format.json do
-				@location = Listing.search(params[:term], fields: ["location", "title", "country"], mispellings: {below: 5})
-				@location = @location.map(&:location)
+				@location = Listing.search(params[:term], fields: ["city_state", "country", "location", "title"], mispellings: {below: 5})
+				@location = @location.map(&:city_state)
 				
 				render json: @location
 			end
@@ -78,7 +78,7 @@ class ListingsController < ApplicationController
 	private
 		def listing_params
 			params.require(:listing).permit(:title, :home_type, :room_type, :accomodate, :location, :latitude, :longitude, :description, :price, 
-				{images: []}, :remove_images, :remote_image_url, :tag_list, :main_image, :sub_image_one, :sub_image_two, :remove_main_image, :remove_sub_image_one, :remove_sub_image_two, :country)
+				{images: []}, :remove_images, :remote_image_url, :tag_list, :main_image, :sub_image_one, :sub_image_two, :remove_main_image, :remove_sub_image_one, :remove_sub_image_two, :country, :city_state)
 		end
 
 		def set_listing

@@ -41,7 +41,12 @@
 
 	<div class="field">
 		<%= f.label :location %><br>
-		<%= f.text_field :location, placeholder: "Location" %>
+		<%= f.text_field :location, placeholder: "Address" %>
+	</div>
+
+	<div class="field">
+		<%= f.label :city_state, "City, State" %><br>
+		<%= select(:listing, :city_state, [["Cheras, Kuala Lumpur"], ["Cheras, Selangor"],["Shah Alam, Selangor"]]) %>
 	</div>
 
 	<div class="field">
@@ -66,7 +71,7 @@
 				<strong>Update / Remove Image</strong>
 			</p>
 			<%= f.file_field :main_image, :accept => "image/jpeg, image/jpg, image/png" %>
-			<%= cl_image_tag @listing.main_image, :width=>50, :height=>50, :crop=>:fill %>
+			<%= cl_image_tag @listing.main_image, :width=>50, :height=>50, :crop=>:fill, :style => "margin-bottom: 10px" %>
 	  	<%= f.label :remove_image %>
 			<%= f.check_box :remove_main_image %>
 		<% else %>
@@ -81,7 +86,7 @@
  				<strong>Update / Remove Image</strong>
  			</p>
 			<%= f.file_field :sub_image_one, :accept => "image/jpeg, image/jpg, image/png" %>
-			<%= cl_image_tag @listing.sub_image_one, :width=>50, :height=>50, :crop=>:fill %>
+			<%= cl_image_tag @listing.sub_image_one, :width=>50, :height=>50, :crop=>:fill, :style => "margin-bottom: 10px" %>
     	<%= f.label :remove_image %>
   		<%= f.check_box :remove_sub_image_one %>
   	<% else %>
@@ -96,7 +101,7 @@
 				<strong>Update / Remove Image</strong>
 			</p>
  			<%= f.file_field :sub_image_two, :accept => "image/jpeg, image/jpg, image/png" %>
-			<%= cl_image_tag @listing.sub_image_two, :width=>50, :height=>50, :crop=>:fill %>
+			<%= cl_image_tag @listing.sub_image_two, :width=>50, :height=>50, :crop=>:fill, :style => "margin-bottom: 10px" %>
     	<%= f.label :remove_image %>
   		<%= f.check_box :remove_sub_image_two %>
   	<% else %>
