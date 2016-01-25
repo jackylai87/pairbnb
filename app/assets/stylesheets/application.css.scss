@@ -21,12 +21,17 @@ nav {
 	padding-top: 5px;
 }
 
-.form-signin {
+#term {
+  padding: 4.5px;
+  width: 330px;
+}
+
+.form-style {
   padding: 15px;
   margin: 0 auto;
 }
 
-.form-signin .field {
+.form-style .field {
   position: relative;
   height: auto;
   -webkit-box-sizing: border-box;
@@ -35,11 +40,11 @@ nav {
   font-size: 16px;
 }
 
-.form-signin .field:focus {
+.form-style .field:focus {
   z-index: 2;
 }
 
-.form-signin input[type="email"] {
+.form-style input[type="text"] {
   padding: 10px;
   height: 35px;
   margin-bottom: 10px;
@@ -47,10 +52,26 @@ nav {
   border-bottom-left-radius: 0;
 }
 
-.form-signin input[type="password"] {
+.form-style input[type="email"] {
   padding: 10px;
   height: 35px;
   margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-style input[type="password"] {
+  padding: 10px;
+  height: 35px;
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-style input[type="file"] {
+  height: 35px;
+  margin-top: 5px;
+  margin-bottom: 5px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }
