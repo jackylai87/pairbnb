@@ -1,10 +1,10 @@
 <%= form_for([@listing, @comment], method: @method) do |f| %>
   <p>
-    <%= f.text_area :input %>
+    <%= f.text_area :input, placeholder: "Nice Room, Nice Host", :style => "width: 320px; height: 120px" %>
     <%= f.hidden_field :user_id, value: current_user.id %>
   </p>
 
   <p>
-    <%= f.submit %>
+    <%= f.submit :class => "btn btn-primary" %>
   </p>
 <% end %>

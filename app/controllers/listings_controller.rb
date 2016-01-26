@@ -68,7 +68,7 @@ class ListingsController < ApplicationController
 			# when user key in things
 			format.json do
 				@location = Listing.search(params[:term], fields: ["city_state", "country", "location", "title"], mispellings: {below: 5})
-				@location = @location.map(&:city_state)
+				@location = @location.map(&:city_state).uniq
 				
 				render json: @location
 			end

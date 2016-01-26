@@ -26,17 +26,17 @@
 
 	<div class="field">
 		<%= f.label :home_type, "Home Type" %><br>
-		<%= select(:listing, :home_type, [["Apartment"], ["Bungalow"], ["Condominium"], ["Link House"], ["Semi-Detached"], ["Terrace"], ["Service Residence"], ["Villa"]]) %>
+		<%= f.select :home_type, [["Apartment"], ["Bungalow"], ["Condominium"], ["Link House"], ["Semi-Detached"], ["Terrace"], ["Service Residence"], ["Villa"]], :include_blank => "Please Select" %>
 	</div>
 
 	<div class="field">
 		<%= f.label :room_type, "Room Type" %><br>
-		<%= select(:listing, :room_type, [["Entire Home / Apt"], ["Private Room"], ["Shared Room"]]) %>
+		<%= f.select :room_type, [["Entire Home / Apt"], ["Private Room"], ["Shared Room"]], :include_blank => "Please Select" %>
 	</div>
 
 	<div class="field">
 		<%= f.label :accomodate %><br>
-		<%= select(:listing, :accomodate, [[1], [2], [3], [4], [5], [6], [7], [8]]) %>
+		<%= f.select :accomodate, [[1], [2], [3], [4], [5], [6], [7], [8]], :include_blank => "Please Select" %>
 	</div>
 
 	<div class="field">
@@ -46,12 +46,12 @@
 
 	<div class="field">
 		<%= f.label :city_state, "City, State" %><br>
-		<%= select(:listing, :city_state, [["Cheras, Kuala Lumpur"], ["Cheras, Selangor"],["Shah Alam, Selangor"]]) %>
+		<%= f.select :city_state, [["Cheras, Kuala Lumpur"], ["Cheras, Selangor"],["Shah Alam, Selangor"]], :include_blank => "Please Select" %>
 	</div>
 
 	<div class="field">
 		<%= f.label :country %><br>
-		<%= select(:listing, :country, [["Malaysia"], ["Singapore"]]) %>
+		<%= f.select :country, [["Malaysia"], ["Singapore"]], :include_blank => "Please Select" %>
 	</div>
 
 	<div class="field">

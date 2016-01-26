@@ -50,81 +50,101 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-7">
+      <h1>
+      	<strong>Title: </strong><%= @listing.title %> hosted by <em><%= link_to @listing.user.name, @listing.user %></em><%= cl_image_tag(avatar_url(@listing.user), :fetch_format=>:png, :width=>40, :height=>40, :crop=>:thumb, :radius=>:max, :style => "margin-bottom: 8px") %>
+      </h1>
+      <table>
+      <tr>
+      <th style="width:110px"><strong>Home Type</strong></th><th>:</th><td><%= @listing.home_type %></td>
+      </tr>
+      <tr>
+      <th style="width:110px">
+      	<strong>Room Type</strong></th><th>:</th><td><%= @listing.room_type %>
+      </td>
+      </tr>
+      <tr>
+      <th style="width:110px">
+      	<strong>Accomodate</strong></th><th>:</th><td><%= @listing.accomodate %>
+      </td>
+      </tr>
+      <tr>
+      <th style="width:110px">
+      	<strong>Location</strong></th><th>:</th><td><%= @listing.location %>
+      </td>
+      </tr>
+      <tr>
+      <th style="width:110px">
+        <strong>City, State</strong></th><th>:</th><td><%= @listing.city_state %>
+      </td>
+      </tr>
+      <tr>
+      <th style="width:110px">
+        <strong>Country</strong></th><th>:</th><td><%= @listing.country %>
+      </td>
+      </tr>
+</table>
+      
+      <p>
+        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" %>
+      </p>
 
-<h1>
-	<strong>Title: </strong><%= @listing.title %> by <em><%= @listing.user.name %></em>
-</h1>
+      <h3>Hosting Nearby</h3>
+      <ul>
+        <% for location in @listing.nearbys(100) %>
+          <li><%= link_to location.title, location %> (<%= location.distance.round(2) %> miles)</li>
+        <% end %>
+      </ul>
+      <p>
+        <strong>Description: </strong><%= @listing.description %>
+      </p>
+    </div>
 
-<p>
-	<strong>Home Type: </strong><%= @listing.home_type %>
-</p>
+    <div class="col-md-5"> 
+      <div class="price-style">
+      <table>
+      <td style="width:200px">
+        <p>
+          <strong>RM </strong><%= @listing.price %><span><strong>Per Night</strong></span>
+        </p>
+        </td>
+        </table>
+        <div id= "box"></div>
 
-<p>
-	<strong>Room Type: </strong><%= @listing.room_type %>
-</p>
+        <p>
+          <%= link_to "Booking", new_listing_reservation_path(@listing), id: "new_booking", remote: true, :class => "btn btn-primary", :style => "width: 200px" %>
+        </p>
+      </div>
+    </div>
 
-<p>
-	<strong>Accomodate: </strong><%= @listing.accomodate %>
-</p>
+    <div class="col-md-12">
+      <h2>Comment: </h2>
 
-<p>
-	<strong>Location: </strong><%= @listing.location %>
-</p>
+      <p>
+        <%= render @listing.comments %>
+      </p>
 
-<p>
-  <strong>City, State: </strong><%= @listing.city_state %>
-</p>
+      <% if !current_user.nil? %>
+      	<h3>Add a comment:</h3>
+      	
+      	<p>
+      		<%= render 'comments/form' %>
+      	</p>
+      <% else %>
+        <p>
+        	<strong>You must <%= link_to "sign in", new_user_session_path %> to write a comment</strong>
+        </p>
+      <% end %>
 
-<p>
-  <strong>Country: </strong><%= @listing.country %>
-</p>
+      <p>
+      	<%= link_to "Edit Listing", edit_listing_path(@listing) %> |
 
-<p>
-<%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" %>
-</p>
+      	<%= link_to "Delete Listing", listing_path(@listing), method: :delete, data: { confirm: "Are you sure you want to delete '#{@listing.title}'?"} %>
+      </p>
 
-<h3>Nearby locations</h3>
-<ul>
-<% for location in @listing.nearbys(100) %>
-  <li><%= link_to location.title, location %> (<%= location.distance.round(2) %> miles)</li>
-<% end %>
-</ul>
-
-<p>
-	<strong>Price Per Night: </strong><%= @listing.price %>
-</p>
-<p>
-	<strong>Description: </strong><%= @listing.description %>
-</p>
-
-<div id= "box"></div>
-
-<p>
-	<%= link_to "Booking", new_listing_reservation_path(@listing), id: "new_booking", remote: true %>
-</p>
-
-<h2>Comment: </h2>
-
-<p>
-	<%= render @listing.comments %>
-</p>
-
-<% if !current_user.nil? %>
-	<h2>Add a comment:</h2>
-	
-	<p>
-		<%= render 'comments/form' %>
-	</p>
-<% else %>
-<p>
-	<strong>You must <%= link_to "sign in", new_user_session_path %> to write a comment</strong>
-</p>
-<% end %>
-
-<p>
-	<%= link_to "Edit Listing", edit_listing_path(@listing) %> |
-
-	<%= link_to "Delete Listing", listing_path(@listing), method: :delete, data: { confirm: "Are you sure you want to delete '#{@listing.title}'?"} %>
-</p>
-
-<%= link_to "Back", listings_path %>
+      <%= link_to "Back", listings_path %>
+    </div>
+  </div>
+</div>
