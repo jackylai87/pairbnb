@@ -109,8 +109,24 @@ nav {
   background-color: white;
 }
 
+.host-intro {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.host-details {
+  font-size: 30px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.host-wrapper {
+  border-bottom: groove;
+}
+
 .price-style {
-  padding-top: 50px;
+  padding-top: 20px;
   font-size: 20px;
 }
 
@@ -120,7 +136,7 @@ nav {
     font-size: 20px;
     color: #777777;
     position: absolute;
-    right: 190px;
+    right: 192px;
   }
 }
 

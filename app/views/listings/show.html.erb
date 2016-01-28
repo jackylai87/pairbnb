@@ -10,32 +10,34 @@
   <div class="carousel-inner" role="listbox">
     <div class="item active">
       <% if @listing.read_attribute(:main_image).nil? %>
-        <%= cl_image_tag ("no-image-found.jpg"), :width=>1500, :height=>700, :crop=>:scale %>
+        <%= cl_image_tag ("no-image-found.jpg"), :width=>1920, :height=>920, :crop=>:scale %>
         <div class="carousel-caption">
           <%= link_to "Upload Here", edit_listing_path(@listing), :class=>"btn btn-primary btn-lg" %>
         </div>
       <% else %>
-        <%= cl_image_tag @listing.main_image, :width=>1500, :height=>700, :crop=>:scale %>
+        <%= cl_image_tag @listing.main_image, :width=>1920, :height=>920, :crop=>:scale %>
       <% end %>
     </div>
+
     <div class="item">
       <% if @listing.read_attribute(:sub_image_one).nil? %>
-        <%= cl_image_tag ("no-image-found.jpg"), :width=>1500, :height=>700, :crop=>:scale %>
+        <%= cl_image_tag ("no-image-found.jpg"), :width=>1920, :height=>920, :crop=>:scale %>
         <div class="carousel-caption">
           <%= link_to "Upload Here", edit_listing_path(@listing), :class=>"btn btn-primary btn-lg" %>
         </div>
       <% else %>
-        <%= cl_image_tag @listing.sub_image_one, :width=>1500, :height=>700, :crop=>:scale %>
+        <%= cl_image_tag @listing.sub_image_one, :width=>1920, :height=>920, :crop=>:scale %>
       <% end %>
     </div>
+
     <div class="item">
      <% if @listing.read_attribute(:sub_image_two).nil? %>
-        <%= cl_image_tag ("no-image-found.jpg"), :width=>1500, :height=>700, :crop=>:scale %>
+        <%= cl_image_tag ("no-image-found.jpg"), :width=>1920, :height=>920, :crop=>:scale %>
         <div class="carousel-caption">
           <%= link_to "Upload Here", edit_listing_path(@listing), :class=>"btn btn-primary btn-lg" %>
         </div>
       <% else %>
-        <%= cl_image_tag @listing.sub_image_two, :width=>1500, :height=>700, :crop=>:scale %>
+        <%= cl_image_tag @listing.sub_image_two, :width=>1920, :height=>920, :crop=>:scale %>
       <% end %>
     </div>
   </div>
@@ -50,66 +52,43 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+
 <div class="container">
   <div class="row">
     <div class="col-md-7">
-      <h1>
-      	<strong>Title: </strong><%= @listing.title %> hosted by <em><%= link_to @listing.user.name, @listing.user %></em><%= cl_image_tag(avatar_url(@listing.user), :fetch_format=>:png, :width=>40, :height=>40, :crop=>:thumb, :radius=>:max, :style => "margin-bottom: 8px") %>
-      </h1>
+      <div class="host-wrapper">
+        <div class="host-intro">
+          <em>Host Details: </em>
+        </div>
+        <div class="host-details">
+          <em><%= link_to @listing.user.name, @listing.user %></em><%= cl_image_tag(avatar_url(@listing.user), :fetch_format=>:png, :width=>50, :height=>50, :crop=>:thumb, :radius=>:max, :style => "margin-bottom: 8px; margin-left: 30px") %>
+        </div>
+      </div>
       <table>
-      <tr>
-      <th style="width:110px"><strong>Home Type</strong></th><th>:</th><td><%= @listing.home_type %></td>
-      </tr>
-      <tr>
-      <th style="width:110px">
-      	<strong>Room Type</strong></th><th>:</th><td><%= @listing.room_type %>
-      </td>
-      </tr>
-      <tr>
-      <th style="width:110px">
-      	<strong>Accomodate</strong></th><th>:</th><td><%= @listing.accomodate %>
-      </td>
-      </tr>
-      <tr>
-      <th style="width:110px">
-      	<strong>Location</strong></th><th>:</th><td><%= @listing.location %>
-      </td>
-      </tr>
-      <tr>
-      <th style="width:110px">
-        <strong>City, State</strong></th><th>:</th><td><%= @listing.city_state %>
-      </td>
-      </tr>
-      <tr>
-      <th style="width:110px">
-        <strong>Country</strong></th><th>:</th><td><%= @listing.country %>
-      </td>
-      </tr>
-</table>
-      
-      <p>
-        <%= image_tag "http://maps.google.com/maps/api/staticmap?size=450x300&sensor=false&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" %>
-      </p>
+        <tr>
+          <th style="width:110px">
+            <h2>
+              <strong>Title</strong>
+            </h2>
+          </th>
+          <th>
+            <h2>:</h2>
+          </th>
+          <th>
+            <h2>
+              <%= @listing.title %> 
+            </h2>
+          </th>
+        </tr>
+      </table>
 
-      <h3>Hosting Nearby</h3>
-      <ul>
-        <% for location in @listing.nearbys(100) %>
-          <li><%= link_to location.title, location %> (<%= location.distance.round(2) %> miles)</li>
-        <% end %>
-      </ul>
-      <p>
-        <strong>Description: </strong><%= @listing.description %>
-      </p>
     </div>
-
-    <div class="col-md-5"> 
+    <div class="col-md-5" style="margin-top: 12px"> 
       <div class="price-style">
-      <table>
-      <td style="width:200px">
-        <p>
-          <strong>RM </strong><%= @listing.price %><span><strong>Per Night</strong></span>
-        </p>
-        </td>
+        <table>
+          <td style="width:200px">
+            <strong>RM </strong><%= @listing.price %><span><strong>Per Night</strong></span>
+          </td>
         </table>
         <div id= "box"></div>
 
@@ -117,6 +96,101 @@
           <%= link_to "Booking", new_listing_reservation_path(@listing), id: "new_booking", remote: true, :class => "btn btn-primary", :style => "width: 200px" %>
         </p>
       </div>
+    </div>
+    <div class="col-md-12" style="font-size: 16px">
+      <table>
+        <tr>
+          <th style="width:110px">
+            <strong>Home Type</strong>
+          </th>
+          <th>:</th>
+          <td>
+            <%= @listing.home_type %>
+          </td>
+        </tr>
+
+        <tr>
+          <th style="width:110px">
+          	<strong>Room Type</strong>
+          </th>
+          <th>:</th>
+          <td>
+            <%= @listing.room_type %>
+          </td>
+        </tr>
+
+        <tr>
+          <th style="width:110px">
+          	<strong>Accomodate</strong>
+          </th>
+          <th>:</th>
+          <td>
+            <%= @listing.accomodate %>
+          </td>
+        </tr>
+
+        <tr>
+          <th style="width:110px">
+          	<strong>Location</strong>
+          </th>
+          <th>:</th>
+          <td>
+            <%= @listing.location %>
+          </td>
+        </tr>
+
+        <tr>
+          <th style="width:110px">
+            <strong>City, State</strong>
+          </th>
+          <th>:</th>
+          <td>
+            <%= @listing.city_state %>
+          </td>
+        </tr>
+
+        <tr>
+          <th style="width:110px">
+            <strong>Country</strong>
+          </th>
+          <th>:</th>
+          <td>
+            <%= @listing.country %>
+          </td>
+        </tr>
+
+        <tr>
+          <th style="width:110px">
+            <strong>Description</strong>
+          </th>
+          <th>:</th>
+          <td>
+            <%= @listing.description %>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="col-md-12", style="border-top: groove; border-bottom: groove">
+      <center>
+        <h3>Approx. Location: </h3>
+        <p>
+          <%= image_tag "http://maps.google.com/maps/api/staticmap?size=640x450&maptype=roadmap&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" %>
+        </p>
+      </center>
+
+      <h3>Hosting Nearby</h3>
+      <ul>
+        <% unless @listing.nearbys(100).empty? %>
+          <% for location in @listing.nearbys(100) %>
+            <div class="col-md-3" style="height: 35px">
+              <li><%= link_to location.title, location %> (<%= location.distance.round(2) %> km)</li>
+            </div>
+          <% end %>
+        <% else %>
+          <li>No hosting within 100km, do you have any? <%= link_to "Post", new_listing_path %> it out now!</li>
+        <% end%>
+      </ul>
     </div>
 
     <div class="col-md-12">
