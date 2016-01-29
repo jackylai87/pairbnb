@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+	before_action :authenticate_user!
+	
 	def create
 		@listing = Listing.find(params[:listing_id])
 		@comment = @listing.comments.create(comment_params)
