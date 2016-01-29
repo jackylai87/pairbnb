@@ -54,51 +54,50 @@
 </div>
 
 <div class="container">
-  <div class="row">
+  <div class="row">    
     <div class="col-md-7">
-      <div class="host-wrapper">
+      <div class="listing-header-wrapper">
         <div class="host-intro">
           <em>Host Details: </em>
         </div>
         <div class="host-details">
           <em><%= link_to @listing.user.name, @listing.user %></em><%= cl_image_tag(avatar_url(@listing.user), :fetch_format=>:png, :width=>50, :height=>50, :crop=>:thumb, :radius=>:max, :style => "margin-bottom: 8px; margin-left: 30px") %>
         </div>
+        <div class="list-intro">
+          <em>About this listing: </em>
+        </div>
+        <div class="list-description">
+          <%= @listing.description%>
+        </div>
       </div>
-      <table>
-        <tr>
-          <th style="width:110px">
-            <h2>
-              <strong>Title</strong>
-            </h2>
-          </th>
-          <th>
-            <h2>:</h2>
-          </th>
-          <th>
-            <h2>
-              <%= @listing.title %> 
-            </h2>
-          </th>
-        </tr>
-      </table>
-
     </div>
     <div class="col-md-5" style="margin-top: 12px"> 
       <div class="price-style">
         <table>
           <td style="width:200px">
-            <strong>RM </strong><%= @listing.price %><span><strong>Per Night</strong></span>
+          <strong>RM </strong><%= @listing.price %><span><strong>Per Night</strong></span>
           </td>
         </table>
         <div id= "box"></div>
-
         <p>
           <%= link_to "Booking", new_listing_reservation_path(@listing), id: "new_booking", remote: true, :class => "btn btn-primary", :style => "width: 200px" %>
         </p>
       </div>
     </div>
-    <div class="col-md-12" style="font-size: 16px">
+
+    <div class="col-md-7" style="font-size: 16px">
       <table>
+        <tr>
+          <th style="width:110px">
+            <h2>Title</h2>
+          </th>
+          <th>
+            <h2>:</h2>
+          </th>
+          <th>
+            <h2><%= @listing.title %> </h2>
+          </th>
+        </tr>
         <tr>
           <th style="width:110px">
             <strong>Home Type</strong>
@@ -158,16 +157,6 @@
             <%= @listing.country %>
           </td>
         </tr>
-
-        <tr>
-          <th style="width:110px">
-            <strong>Description</strong>
-          </th>
-          <th>:</th>
-          <td>
-            <%= @listing.description %>
-          </td>
-        </tr>
       </table>
     </div>
 
@@ -179,7 +168,7 @@
         </p>
       </center>
 
-      <h3>Hosting Nearby</h3>
+      <h3>Listing Nearby</h3>
       <ul>
         <% unless @listing.nearbys(100).empty? %>
           <% for location in @listing.nearbys(100) %>
@@ -188,7 +177,7 @@
             </div>
           <% end %>
         <% else %>
-          <li>No hosting within 100km, do you have any? <%= link_to "Post", new_listing_path %> it out now!</li>
+          <li>No listing within 100km, do you have any? <%= link_to "Post", new_listing_path %> it out now!</li>
         <% end%>
       </ul>
     </div>

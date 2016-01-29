@@ -109,25 +109,39 @@ nav {
   background-color: white;
 }
 
-.host-intro {
+.listing-header-wrapper {
+  border-bottom: groove;
+}
+
+.listing-header-wrapper .host-intro {
   margin-top: 10px;
   font-size: 20px;
 }
 
-.host-details {
+.listing-header-wrapper .host-details {
   font-size: 30px;
   margin-left: 20px;
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
-.host-wrapper {
-  border-bottom: groove;
+.listing-header-wrapper .list-intro {
+  margin-top: 10px;
+  font-size: 20px;
+}
+
+.listing-header-wrapper .list-description {
+  font-size: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  word-wrap: break-word;
 }
 
 .price-style {
   padding-top: 20px;
   font-size: 20px;
+  position: absolute;
 }
 
 @media only screen and (max-width: 1199px) {
@@ -136,7 +150,7 @@ nav {
     font-size: 20px;
     color: #777777;
     position: absolute;
-    right: 192px;
+    right: 2px;
   }
 }
 
@@ -146,11 +160,17 @@ nav {
     font-size: 20px;
     color: #777777;
     position: absolute;
-    right: 275px;
+    right: 2px;
   }
 }
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 991px) { 
+  .price-style {
+    padding-top: 20px;
+    font-size: 20px;
+    position: static;
+  }
+
   .price-style span {
     font-weight: bold;
     font-size: 20px;

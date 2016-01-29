@@ -1,11 +1,13 @@
-<h1>New Reservation</h1>
+<div class="container">
+	<h1>New Reservation</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to "Back", listing_path(@listing) %>
+	<%= link_to "Back", listing_path(@listing) %>
+</div>
 
-<script>
-	braintree.setup("<%= @client_token %>", "dropin", {
-  container: "payment-form"
-});
-</script>
+	<script>
+		braintree.setup("<%= @client_token %>", "dropin", {
+	  container: "payment-form"
+	});
+	</script>

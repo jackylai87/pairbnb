@@ -42,7 +42,7 @@ class ReservationsController < ApplicationController
 			else
 				# flash[:booking_status] = "Booking Unsuccessful, please try again."
 				respond_to do |format|
-					format.html { redirect_to @listing, notice: "Booking Unsuccessful, please try again!"}
+					format.html { redirect_to @listing, notice: "Booking Unsuccessful with Reason: #{result.transaction.processor_response_code} - #{result.transaction.processor_response_text}, please try agin!" }
 					format.js
 				end
 			end
