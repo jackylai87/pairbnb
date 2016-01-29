@@ -50,19 +50,19 @@
         </div>
 
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Hosting", new_listing_path if current_user.present? %></li>
+          <li><%= link_to "Hosting", new_listing_path if user_signed_in? %></li>
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false", style="padding-top: 11px;">
-              <% if current_user.present? && current_user.image.present? %>
+              <% if user_signed_in? && current_user.image.present? %>
                 <%= facebook_profile_image_tag(avatar_url(current_user), :fetch_format=>:png, :width=>30, :height=>30, :crop=>:thumb, :radius=>:max, :type=>"fetch", alt: "FB User Image") %> <%= current_user.name %>
-              <% elsif current_user.present? %>
+              <% elsif user_signed_in? %>
                 <%= cl_image_tag(avatar_url(current_user), :fetch_format=>:png, :width=>30, :height=>30, :crop=>:thumb, :radius=>:max) %> <%= current_user.name %>
               <% else %>
                 <strong>Sign In</strong>
               <% end %> 
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
-            <% if current_user.present? %>
+            <% if user_signed_in? %>
               <li><%= link_to "User Profile", user_path(current_user.id) %></li>
               <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
             <% else %>
@@ -71,7 +71,7 @@
             <% end %>
               <li role="separator" class="divider"></li>
               <li>
-                <% if current_user.present? %>
+                <% if user_signed_in? %>
                   <%= link_to "Sign out", destroy_user_session_path, method: 'delete', data: { confirm: "#{current_user.name}, are you sure you want to sign out?" } %>
                 <% else %>
                   <%= link_to "Sign Up", new_user_registration_path %>

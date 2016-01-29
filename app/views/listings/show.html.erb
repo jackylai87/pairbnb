@@ -189,7 +189,7 @@
         <%= render @listing.comments %>
       </p>
 
-      <% if !current_user.nil? %>
+      <% if user_signed_in? %>
       	<h3>Add a comment:</h3>
       	
       	<p>
