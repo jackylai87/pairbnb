@@ -1,6 +1,7 @@
 class ListingsController < ApplicationController
 	before_action :authenticate_user!, except: [:show, :index]
 	before_action :set_listing, only: [:show, :edit, :update, :destroy]
+	before_filter :require_permission, only: [:edit, :update, :destroy]
 
 	def index
 		if params[:search].present?
@@ -84,5 +85,11 @@ class ListingsController < ApplicationController
 
 		def set_listing
 			@listing = Listing.find(params[:id])
+		end
+
+		def require_permission
+			if current_user != Listing.find(params[:id]).user
+				redirect_to @listing, notice: "You do not have permission to do this!"
+			end
 		end
 end

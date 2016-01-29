@@ -1,16 +1,16 @@
 <div class="row">
 	<div class="col-md-3">
 		<div class="center">
-			<% if current_user.avatar.present? %>
-				<%= cl_image_tag(avatar_url(current_user), class: "avatar-full") %>
-			<% elsif current_user.image.present? %>
-				<%= facebook_profile_image_tag(avatar_url(current_user), class: "avatar-full") %>
+			<% if @user.avatar.present? %>
+				<%= cl_image_tag(avatar_url(@user), class: "avatar-full") %>
+			<% elsif @user.image.present? %>
+				<%= image_tag(avatar_url(@user), class: "avatar-full") %>
 			<% else %>
 				<%= cl_image_tag("blank_avatar_hhrxwn.png", class: "avatar-full") %>
 			<% end %>
 		</div>
 		<div class="panel panel-default">
-			<div class="panel-heading">Verification</div>
+			<div class="panel-heading"><%= @user.name %></div>
 			<div class="panel-body">
 				Email Address<br>
 				Phone Number
@@ -19,12 +19,11 @@
 	</div>
 
 	<div class="col-md-9">
-		<h2>Hello, <%= current_user.name %></h2>
 		<p>
 			Listings: 
 		</p>
 
-		<% current_user.listings.each_with_index do |listing, index| %>
+		<% @user.listings.each_with_index do |listing, index| %>
 			<p>
 				<%= index + 1 %>) 
 				<%= link_to listing.title, listing_path(listing.id) %><br>
@@ -35,7 +34,7 @@
 			Reservations: 
 		</p>
 
-		<% current_user.reservations.each_with_index do |reservation, index| %>
+		<% @user.reservations.each_with_index do |reservation, index| %>
 			<p>
 				<%= index + 1 %>) 
 				<%= reservation.check_in_date %> to 
