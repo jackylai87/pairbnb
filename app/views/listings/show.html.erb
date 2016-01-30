@@ -201,7 +201,7 @@
         </p>
       <% end %>
 
-      <% if @listing.user_id == current_user.id %>
+      <% if user_signed_in? && @listing.user_id == current_user.id %>
         <p>
         	<%= link_to "Edit Listing", edit_listing_path(@listing) %> |
 
