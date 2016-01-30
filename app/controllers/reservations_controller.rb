@@ -38,7 +38,7 @@ class ReservationsController < ApplicationController
 					format.html { redirect_to @listing, notice: "Booking has been made successfully, TQ!" }
 					format.js
 				end
-				ReservationJob.perform_later(@customer, @host, @listing.id, @reservation.id)
+				ReservationJob.perform_later(@customer, @host, @listing, @reservation)
 				# redirect_to @listing
 			else
 				# flash[:booking_status] = "Booking Unsuccessful, please try again."

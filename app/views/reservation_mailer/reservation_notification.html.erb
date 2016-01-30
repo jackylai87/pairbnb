@@ -4,8 +4,8 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Hi, <%= @customer.name %></h1>
-    <h2>Congratulations! Your booking in PairBnb is confirmed, details as below :- </h2>
+    <h1>Hi, <%= @host.name %></h1>
+    <h2>Congratulations! You have received a booking from <%= @customer.name %>, details as below :- </h2>
     <table>
     	<tr>
     		<th style="width:160px">
@@ -44,6 +44,6 @@
   			</th>
     	</tr>
 		</table>
-		<h2>Thank You for your booking from <%= @host.name %> in Pairbnb.</h2>
+		<h2>Thank You.</h2>
   </body>
 </html>
