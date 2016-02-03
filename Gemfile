@@ -48,6 +48,9 @@ gem 'will_paginate'
 # To show messages in js
 gem 'toastr_rails'
 
+gem 'private_pub'
+gem 'thin'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

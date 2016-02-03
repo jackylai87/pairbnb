@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require toastr_rails
 //= require turbolinks
+//= require private_pub
 //= require_tree .

@@ -1,47 +1,54 @@
-<div class="row">
-	<div class="col-md-3">
-		<div class="center">
-			<% if @user.avatar.present? %>
-				<%= cl_image_tag(avatar_url(@user), class: "avatar-full") %>
-			<% elsif @user.image.present? %>
-				<%= image_tag(avatar_url(@user), class: "avatar-full") %>
-			<% else %>
-				<%= cl_image_tag("blank_avatar_hhrxwn.png", class: "avatar-full") %>
-			<% end %>
-		</div>
-		<div class="panel panel-default">
-			<div class="panel-heading"><%= @user.name %></div>
-			<div class="panel-body">
-				Email Address<br>
-				Phone Number
+<div class="container">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="center">
+				<% if @user.avatar.present? %>
+					<%= cl_image_tag(avatar_url(@user), class: "avatar-full") %>
+				<% elsif @user.image.present? %>
+					<%= image_tag(avatar_url(@user), class: "avatar-full") %>
+				<% else %>
+					<%= cl_image_tag("blank_avatar_hhrxwn.png", class: "avatar-full") %>
+				<% end %>
+				<% if current_user != @user %>
+					<div class="row-space-2">
+						<%= link_to "Send Message", conversations_path(sender_id: current_user.id, recipient_id: @user.id), method: 'post', class: "btn btn-primary wide" %>
+					</div>
+				<% end %>
+			</div>
+			<div class="panel panel-default">
+				<div class="panel-heading"><%= @user.name %></div>
+				<div class="panel-body">
+					Email Address<br>
+					Phone Number
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="col-md-9">
-		<p>
-			Listings: 
-		</p>
-
-		<% @user.listings.each_with_index do |listing, index| %>
+		<div class="col-md-9">
 			<p>
-				<%= index + 1 %>) 
-				<%= link_to listing.title, listing_path(listing.id) %><br>
+				Listings: 
 			</p>
-		<% end %>
 
-		<p>
-			Reservations: 
-		</p>
+			<% @user.listings.each_with_index do |listing, index| %>
+				<p>
+					<%= index + 1 %>) 
+					<%= link_to listing.title, listing_path(listing.id) %><br>
+				</p>
+			<% end %>
 
-		<% @user.reservations.each_with_index do |reservation, index| %>
 			<p>
-				<%= index + 1 %>) 
-				<%= reservation.check_in_date %> to 
-				<%= reservation.check_out_date %> @ 
-				<%= link_to reservation.listing.title, listing_path(reservation.listing.id) %> | 
-				<%= link_to "Reservation Page", listing_reservation_path(reservation.listing.id, reservation.id) %>
+				Reservations: 
 			</p>
-		<% end %>
+
+			<% @user.reservations.each_with_index do |reservation, index| %>
+				<p>
+					<%= index + 1 %>) 
+					<%= reservation.check_in_date %> to 
+					<%= reservation.check_out_date %> @ 
+					<%= link_to reservation.listing.title, listing_path(reservation.listing.id) %> | 
+					<%= link_to "Reservation Page", listing_reservation_path(reservation.listing.id, reservation.id) %>
+				</p>
+			<% end %>
+		</div>
 	</div>
 </div>

@@ -2,8 +2,34 @@
 @import "bootstrap";
 @import "toastr_rails";
 
+.avatar-small {
+  width: 28px;
+}
+
+.avatar-medium {
+  width: 48px;
+}
+
+.avatar-large {
+  width: 68px;
+}
+
 .avatar-full {
 	width: 100%;
+}
+
+.container {
+  width: 80%;
+}
+
+.wide {
+  width: 100%;
+}
+
+.conversation-name {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-weight: bold;
 }
 
 th {
@@ -27,7 +53,7 @@ html {
 .footer {
   position: absolute;
   bottom: 0;
-  width: 100%;
+  width: 80%;
   /* Set the fixed height of the footer here */
   height: 60px;
 }
