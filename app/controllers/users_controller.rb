@@ -3,5 +3,6 @@ class UsersController < ApplicationController
 	
 	def show
 		@user = User.find(params[:id])
+		# @user_listing_reservations = Reservation.where("listing.user_id" == params[:id])
 	end
 end

@@ -25,30 +25,100 @@
 		</div>
 
 		<div class="col-md-9">
-			<p>
-				Listings: 
-			</p>
+			<h3>
+				<%= @user.name %>'s Listings: 
+			</h3>
 
-			<% @user.listings.each_with_index do |listing, index| %>
-				<p>
-					<%= index + 1 %>) 
-					<%= link_to listing.title, listing_path(listing.id) %><br>
-				</p>
+			<% if @user.listings.exists? %>
+				<table>
+					<thead>
+	      		<tr>
+	      			<th style="width: 60px">No.</th>
+	      			<th style="width: 160px">Title</th>
+	        		<th style="width: 250px">Location</th>
+	        	</tr>
+	        </thead>
+
+	        <tbody>
+						<% @user.listings.each_with_index do |listing, index| %>
+							<tr>
+								<td style="height: 30px"><%= index + 1 %></td>
+								<td style="height: 30px"><%= link_to listing.title, listing_path(listing.id) %></td>
+								<td style="height: 30px"><%= listing.city_state %>, <%= listing.country %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			<% else %>
+				<li><strong>No Listing Yet</strong></li>
 			<% end %>
 
-			<p>
-				Reservations: 
-			</p>
+			<% if current_user.id == @user.id %>
+				<h3>
+					Your Listing's Reservations: 
+				</h3>
 
-			<% @user.reservations.each_with_index do |reservation, index| %>
-				<p>
-					<%= index + 1 %>) 
-					<%= reservation.check_in_date %> to 
-					<%= reservation.check_out_date %> @ 
-					<%= link_to reservation.listing.title, listing_path(reservation.listing.id) %> | 
-					<%= link_to "Reservation Page", listing_reservation_path(reservation.listing.id, reservation.id) %>
-				</p>
-			<% end %>
+				<table>
+					<thead>
+	      		<tr>
+	      			<th style="width: 60px">No.</th>
+	      			<th style="width: 160px">Title</th>
+	      			<th style="width: 250px">Location</th>
+	        		<th style="width: 220px">Date</th>
+	        		<th style="width: 120px">Reservation Page</th>
+	        	</tr>
+	        </thead>
+
+	        <tbody>
+						<% @user.listings.each do |listing| %>
+							<% listing.reservations.each_with_index do |reservation, index| %>
+								<tr>
+									<td style="height: 30px"><%= index + 1 %></td>
+									<td style="height: 30px"><%= link_to reservation.listing.title, listing_path(listing.id) %></td>
+									<td style="height: 30px"><%= reservation.listing.city_state %>, <%= reservation.listing.country %></td>
+									<td style="height: 30px"><%= reservation.check_in_date %> -
+									<%= reservation.check_out_date %></td>
+									<td style="height: 30px"><%= link_to "Click Here", listing_reservation_path(reservation.listing.id, reservation.id) %></td>
+								</tr>
+							<% end%>
+							<th></th>
+						<% end %>
+					</tbody>
+				</table>
+
+				<h3>
+					Your Reservations: 
+				</h3>
+				<% if @user.reservations.exists? %>
+					<table>
+						<thead>
+		      		<tr>
+		      			<th style="width: 60px">No.</th>
+		      			<th style="width: 160px">Title</th>
+		      			<th style="width: 250px">Location</th>
+		        		<th style="width: 220px">Date</th>
+		        		<th style="width: 120px">Reservation Page</th>
+		        	</tr>
+		        </thead>
+
+		        <tbody>
+							<% @user.reservations.each_with_index do |reservation, index| %>
+								<tr>
+									<td style="height: 30px"><%= index + 1 %></td>
+									<td style="height: 30px"><%= link_to reservation.listing.title, listing_path(reservation.listing.id) %></td>
+									<td style="height: 30px"><%= reservation.listing.city_state %>, <%= reservation.listing.country %></td>
+									<td style="height: 30px"><%= reservation.check_in_date %> -
+									<%= reservation.check_out_date %></td>
+									<td style="height: 30px"><%= link_to "Click Here", listing_reservation_path(reservation.listing.id, reservation.id) %></td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+					
+				<% else %>
+					<li><strong>No Reservation Yet</strong>
+				<% end %>
+			<% end %>	
 		</div>
 	</div>
 </div>

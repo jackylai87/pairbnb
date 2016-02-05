@@ -1,7 +1,10 @@
 <div class="container">
 	<h1>Reservation</h1>
-	<h3>Property Title: </h3>
+	<h3>Listing Title: </h3>
 	<%= @reservation.listing.title %>
+
+	<h3>Book By: </h3>
+	<%= @reservation.user.name %>
 
 	<h3>Reservation Date: </h3>
 	<%= @reservation.check_in_date %> <strong>to </strong>
