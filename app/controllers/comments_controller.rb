@@ -4,7 +4,11 @@ class CommentsController < ApplicationController
 	def create
 		@listing = Listing.find(params[:listing_id])
 		@comment = @listing.comments.create(comment_params)
-		redirect_to listing_path(@listing)
+		if @comment.save
+			redirect_to listing_path(@listing), notice: "Thank you for your comment."
+		else
+			redirect_to listing_path(@listing), notice: "Comment failed, please type something to comment."
+		end
 	end
 
 	def edit
@@ -17,16 +21,16 @@ class CommentsController < ApplicationController
 		@listing = Listing.find(params[:listing_id])
 		@comment = @listing.comments.find(params[:id])
 		@comment.destroy
-		redirect_to listing_path(@listing)
+		redirect_to listing_path(@listing), notice: "Comment deleted."
 	end
 
 	def update
 		@listing = Listing.find(params[:listing_id])
 		@comment = @listing.comments.find(params[:id])
 		if @comment.update(comment_params)
-			redirect_to @listing
+			redirect_to @listing, notice: "Comment Updated."
 		else
-			render :listing
+			redirect_to listing_path(@listing), notice: "Comment update failed, please try again."
 		end
 	end
 	private

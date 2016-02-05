@@ -1,12 +1,11 @@
-<p>
-  &bull; <%= comment.input %>
-
-  <strong>by: </strong>
-  <em><%= comment.user.name %></em>
-</p>
-
-<p>
-	&nbsp;&nbsp;<%= link_to "Edit Comment", edit_listing_comment_path(@listing, comment) %> |
-
-  <%= link_to 'Delete Comment', [comment.listing, comment], method: :delete, data: { confirm: 'Are you sure?' } %>
-</p>
+<div class="comment-box">
+	<table>
+		<tr>
+			<th style="width: 580px"><%= comment.input %></th>
+			<th style="width: 165px"><%= comment.user.name %></th>
+			<th style="width: 45px"><%= link_to "Edit", edit_listing_comment_path(@listing, comment) %></th>
+			<th style="width: 10px">|</th>
+			<th style="width: 45px"><%= link_to 'Delete', [comment.listing, comment], method: :delete, data: { confirm: 'Are you sure?' } %></th>
+		</tr>
+	</table>
+</div>
