@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-	before_action :authenticate_user!, except: [:show, :index]
+	before_action :authenticate_user!, except: [:show, :index, :search]
 	before_action :set_listing, only: [:show, :edit, :update, :destroy]
 	before_filter :require_permission, only: [:edit, :update, :destroy]
 

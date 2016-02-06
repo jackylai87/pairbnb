@@ -1,44 +1,46 @@
-<div class="container">
-	<div class="row">
-		
-		<div class="col-md-3 text-center">
-			<%= cl_image_tag avatar_url(@other), class: "img-circle avatar-full" %>
-			<div class="conversation-name">
-				<%= @other.name %>
-			</div>
-			<%= link_to "View Profile", @other, class: "btn btn-default wide" %>
-		</div>
-
-		<div class="col-md-9">
+<div class="message-container">
+	<div class="container">
+		<div class="row">
 			
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					Conversation with <%= @other.name %>
+			<div class="col-md-3 text-center">
+				<%= cl_image_tag avatar_url(@other), class: "img-circle avatar-full" %>
+				<div class="conversation-name">
+					<%= @other.name %>
 				</div>
-				<div class="panel-body" style="padding-left: 0px; padding-right: 0px">
-					<div class="container" style="padding-left: 0px; padding-right: 0px">
-						
-						<%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
-							<div class="form-group">
-								<%= f.text_area :content, id: "new_message", placeholder: "Add a personal message", class: "form-control",  style: :"height: 100px" %>
-							</div>
-							<%= f.hidden_field :user_id, value: current_user.id %>
+				<%= link_to "View Profile", @other, class: "btn btn-default wide" %>
+			</div>
 
-							<div class="actions">
-								<%= f.submit "Send Message", class: "btn btn-primary" %>
-							</div>
-						<% end %>
+			<div class="col-md-9">
+				
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						Conversation with <%= @other.name %>
+					</div>
+					<div class="panel-body" style="padding-left: 0px; padding-right: 0px">
+						<div class="container" style="padding-left: 0px; padding-right: 0px">
+							
+							<%= form_for [@conversation, @conversation.messages.new], remote: true do |f| %>
+								<div class="form-group">
+									<%= f.text_area :content, id: "new_message", placeholder: "Add a personal message", class: "form-control",  style: :"height: 100px" %>
+								</div>
+								<%= f.hidden_field :user_id, value: current_user.id %>
 
+								<div class="actions">
+									<%= f.submit "Send Message", class: "btn btn-primary" %>
+								</div>
+							<% end %>
+
+						</div>
 					</div>
 				</div>
-			</div>
 
-			<div id="chat">
-				<%= render @messages, locals: {conversation: @conversation} %>
+				<div id="chat">
+					<%= render @messages, locals: {conversation: @conversation} %>
+				</div>
+
 			</div>
 
 		</div>
-
 	</div>
 </div>
 
