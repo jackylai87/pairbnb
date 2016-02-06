@@ -60,7 +60,7 @@ class ListingsController < ApplicationController
 		respond_to do |format|
 			# when the 'search' button is clicked
 			format.html do
-				@listings = Listing.search(params[:term], misspellings: {below: 5}, emoji: true)	
+				@listings = Listing.search(params[:term], misspellings: {below: 5}, emoji: true, page: params[:page], per_page: 3)
 				if @listings.blank?
 					@error = "No result is found"
 				end
