@@ -71,17 +71,26 @@
         </div>
       </div>
     </div>
-    <div class="col-md-5" style="margin-top: 12px"> 
+    <div class="col-md-5" style="margin-top: 12px">
       <div class="price-style">
         <table>
           <td style="width:200px">
-          <strong>RM </strong><%= @listing.price %><span><strong>Per Night</strong></span>
+            <strong>RM </strong><%= @listing.price %><span><strong>Per Night</strong></span>
           </td>
         </table>
-        <div id= "box"></div>
-        <p>
-          <%= link_to "Booking", new_listing_reservation_path(@listing), id: "new_booking", remote: true, :class => "btn btn-primary", :style => "width: 200px" %>
-        </p>
+        <% if user_signed_in? && @listing.user_id != current_user.id %>
+          <div id= "box"></div>
+            <p>
+              <%= link_to "Booking", new_listing_reservation_path(@listing), id: "new_booking", remote: true, :class => "btn btn-primary", :style => "width: 200px" %>
+            </p>
+          </div>
+        <% elsif user_signed_in? && @listing.user_id == current_user.id %>
+          <strong>You can view your bookings <%= link_to "here", user_path(current_user.id) %></strong>
+        <% else %>
+          <p>
+            <strong>Interested? <%= link_to "Sign in", new_user_session_path %> to book now!</strong>
+          </p>
+        <% end %>
       </div>
     </div>
 
