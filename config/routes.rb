@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 	authenticate :user do
   	mount Sidekiq::Web => '/sidekiq'
 	end
-  root 'home#index'
+  root 'pages#homepage'
+  get '/privacy', to: 'pages#privacy'
+  get '/term', to: 'pages#term'
   get '/search', to: 'listings#search'
   get 'tags/:tag', to: 'listings#index', as: :tag
   get 'tags', to: 'listings#index', as: :tags
