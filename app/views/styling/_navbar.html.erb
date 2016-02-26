@@ -63,18 +63,18 @@
             <span class="caret"></span></a>
             <ul class="dropdown-menu">
             <% if user_signed_in? %>
-              <li><%= link_to "User Profile", user_path(current_user.id) %></li>
-              <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
+            <li><%= link_to "<span class=\"fa fa-user\"></span> User Profile".html_safe, user_path(current_user.id) %></li>
+            <li><%= link_to "<span class=\"fa fa-pencil-square-o\"></span> Edit Profile".html_safe, edit_user_registration_path %></li>
             <% else %>
-              <li><%= link_to "Sign In", new_user_session_path %></li>
-              <li><%= link_to "Continue with Facebook", user_omniauth_authorize_path(:facebook), id: "sign_in" %></li>
+              <li><%= link_to "<span class=\"fa fa-sign-in\"></span> Sign In".html_safe, new_user_session_path %></li>
+              <li><%= link_to "<span class=\"fa fa-facebook-square\"></span> Continue with Facebook".html_safe, user_omniauth_authorize_path(:facebook), id: "sign_in" %></li>
             <% end %>
               <li role="separator" class="divider"></li>
               <li>
                 <% if user_signed_in? %>
-                  <%= link_to "Sign out", destroy_user_session_path, method: 'delete', data: { confirm: "#{current_user.name}, are you sure you want to sign out?" } %>
-                <% else %>
-                  <%= link_to "Sign Up", new_user_registration_path %>
+                  <%= link_to "<span class=\"fa fa-sign-out\"></span> Sign Out".html_safe, destroy_user_session_path, method: 'delete', data: { confirm: "#{current_user.name}, are you sure you want to sign out?" } %>
+                 <% else %>
+                  <li><%= link_to "<span class=\"fa fa-user-plus\"></span> Sign Up".html_safe, new_user_registration_path %></li>
                 <% end %>
               </li>
             </ul>

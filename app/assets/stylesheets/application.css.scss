@@ -102,10 +102,13 @@ nav {
   border-bottom-left-radius: 0;
 }
 
+.form-style .field .input-group {
+  margin-bottom: 10px;
+}
+
 .form-style input[type="email"] {
   padding: 10px;
   height: 42px;
-  margin-bottom: 10px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -113,7 +116,6 @@ nav {
 .form-style input[type="password"] {
   padding: 10px;
   height: 42px;
-  margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
 }

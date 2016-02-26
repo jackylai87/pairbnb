@@ -4,13 +4,17 @@
 
     <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, :placeholder => "Email Address", autofocus: true, required: true %>
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-envelope-o" aria-hidden="true"></span></span>
+           <%= f.email_field :email, :placeholder => "Email Address", autofocus: true, required: true %>
+        </div>
       </div>
 
       <div class="field">
-        <%= f.label :password %><br />
-        <%= f.password_field :password, :placeholder => "Password", autocomplete: "off", required: true %>
+        <div class="input-group">
+          <span class="input-group-addon"><span class="fa fa-key" aria-hidden="true"></span></span>
+          <%= f.password_field :password, autocomplete: "off", placeholder: "Password", required: true %>
+        </div>
       </div>
 
       <% if devise_mapping.rememberable? -%>
@@ -21,7 +25,9 @@
       <% end -%>
 
       <div class="actions">
-        <%= f.submit "Log in", :class => "btn btn-primary", :style => "width: 191px; margin-bottom: 10px" %>
+        <%= f.button :button, class: 'btn btn-primary', :style => "width: 229px; margin-bottom: 10px" do %>
+          <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login
+        <% end %>  
       </div>
     <% end %>
 
