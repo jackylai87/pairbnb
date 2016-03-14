@@ -15,20 +15,30 @@
 	   <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
 	</head>
 	<body>
-		<div class="header-navbar">
-			<%= render 'styling/navbar' %>
-		</div>
-		<div class="body-contain">
-			<%= render 'styling/message' %>
-			<%= yield %>
+		<div class="wrapper">
+			<div class="header-navbar">
+				<%= render 'styling/navbar' %>
+			</div>
+			<div class="body-contain">
+				<%= render 'styling/message' %>
+				<%= yield %>
+
+				<!-- There should be no content inside the .push div as it is a hidden element that "pushes" down the footer so it doesn't overlap anything. -->
+				<div class="push"></div>
+
+			</div>
 		</div>
 
-	<!-- FOOTER -->
-	 <div class="container" >
-	  <footer class="footer" >
-	    <p class="pull-right"><a href="">Back to top</a></p>
-	    <p>&copy; 2015 JackyBnB &middot; <%= link_to "Privacy", privacy_path %> &middot; <%= link_to "Terms", term_path %></p>
-	  </footer>
-	 </div>
+		<!-- FOOTER -->
+		<div class="container footer">
+			<div class="row">
+	 			<div class="col-sm-9">
+	 				<p>&copy; 2015 JackyBnB &middot; <%= link_to "Privacy", privacy_path %> &middot; <%= link_to "Terms", term_path %></p>
+	 			</div>
+	 			<div class="col-sm-3">
+	    		<p class="pull-right"><a href="">Back to top</a></p>
+	    	</div>	  
+	 		</div>
+		</div>
 	</body>
 </html>

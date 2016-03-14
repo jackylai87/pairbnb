@@ -2,6 +2,31 @@
 @import "bootstrap";
 @import "toastr_rails";
 
+* {
+margin: 0;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  padding-top: 61px;
+  background-color: #eee;
+}
+
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -4em;
+}
+
+.footer, .push {
+  height: 5em;
+}
+
 .user-listing-reservation {
   border-bottom: groove
 }
@@ -39,27 +64,6 @@
 th {
   width: 30px;
   height: 50px;
-}
-
-body {
-	padding-top: 61px;
-  padding-bottom: 40px;
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  background-color: #eee;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 80%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
 }
 
 .tagging {
