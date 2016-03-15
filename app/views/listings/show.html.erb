@@ -1,224 +1,226 @@
-<div id="listing-page" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#listing-page" data-slide-to="0" class="active"></li>
-    <li data-target="#listing-page" data-slide-to="1"></li>
-    <li data-target="#listing-page" data-slide-to="2"></li>
-  </ol>
+<body style="padding-top: 55px">
+  <div id="listing-page" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#listing-page" data-slide-to="0" class="active"></li>
+      <li data-target="#listing-page" data-slide-to="1"></li>
+      <li data-target="#listing-page" data-slide-to="2"></li>
+    </ol>
 
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner" role="listbox">
-    <div class="item active">
-      <% if @listing.read_attribute(:main_image).nil? %>
-        <%= cl_image_tag ("no-image-found.jpg"), :width=>1920, :height=>920, :crop=>:scale %>
-        <div class="carousel-caption">
-          <%= link_to "Upload Here", edit_listing_path(@listing), :class=>"btn btn-primary btn-lg" %>
-        </div>
-      <% else %>
-        <%= cl_image_tag @listing.main_image, :width=>1920, :height=>920, :crop=>:scale %>
-      <% end %>
-    </div>
-
-    <div class="item">
-      <% if @listing.read_attribute(:sub_image_one).nil? %>
-        <%= cl_image_tag ("no-image-found.jpg"), :width=>1920, :height=>920, :crop=>:scale %>
-        <div class="carousel-caption">
-          <%= link_to "Upload Here", edit_listing_path(@listing), :class=>"btn btn-primary btn-lg" %>
-        </div>
-      <% else %>
-        <%= cl_image_tag @listing.sub_image_one, :width=>1920, :height=>920, :crop=>:scale %>
-      <% end %>
-    </div>
-
-    <div class="item">
-     <% if @listing.read_attribute(:sub_image_two).nil? %>
-        <%= cl_image_tag ("no-image-found.jpg"), :width=>1920, :height=>920, :crop=>:scale %>
-        <div class="carousel-caption">
-          <%= link_to "Upload Here", edit_listing_path(@listing), :class=>"btn btn-primary btn-lg" %>
-        </div>
-      <% else %>
-        <%= cl_image_tag @listing.sub_image_two, :width=>1920, :height=>920, :crop=>:scale %>
-      <% end %>
-    </div>
-  </div>
-
-  <!-- Controls -->
-  <a class="left carousel-control" href="#listing-page" role="button" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#listing-page" role="button" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-
-<div class="container">
-  <div class="row">    
-    <div class="col-md-7">
-      <div class="listing-header-wrapper">
-        <div class="host-intro">
-          <em>Host Details: </em>
-        </div>
-        <div class="host-details">
-          <em><%= link_to @listing.user.name, @listing.user %></em><%= cl_image_tag(avatar_url(@listing.user), :fetch_format=>:png, :width=>50, :height=>50, :crop=>:thumb, :radius=>:max, :style => "margin-bottom: 8px; margin-left: 30px") %>
-        </div>
-        <div class="list-intro">
-          <em>About this listing: </em>
-        </div>
-        <div class="list-description">
-          <%= @listing.description%>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-5" style="margin-top: 12px">
-      <div class="price-style">
-        <table>
-          <td style="width:200px">
-            <strong>RM </strong><%= @listing.price %><span><strong>Per Night</strong></span>
-          </td>
-        </table>
-        <% if user_signed_in? && @listing.user_id != current_user.id %>
-          <div id= "box"></div>
-            <p>
-              <%= link_to "Booking", new_listing_reservation_path(@listing), id: "new_booking", remote: true, :class => "btn btn-primary", :style => "width: 200px" %>
-            </p>
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <% if @listing.read_attribute(:main_image).nil? %>
+          <%= cl_image_tag ("no-image-found.jpg"), :width=>1920, :height=>920, :crop=>:scale %>
+          <div class="carousel-caption">
+            <%= link_to "Upload Here", edit_listing_path(@listing), :class=>"btn btn-primary btn-lg" %>
           </div>
-        <% elsif user_signed_in? && @listing.user_id == current_user.id %>
-          <strong>You can view your bookings <%= link_to "here", user_path(current_user.id) %></strong>
         <% else %>
-          <p>
-            <strong>Interested? <%= link_to "Sign in", new_user_session_path %> to book now!</strong>
-          </p>
+          <%= cl_image_tag @listing.main_image, :width=>1920, :height=>920, :crop=>:scale %>
+        <% end %>
+      </div>
+
+      <div class="item">
+        <% if @listing.read_attribute(:sub_image_one).nil? %>
+          <%= cl_image_tag ("no-image-found.jpg"), :width=>1920, :height=>920, :crop=>:scale %>
+          <div class="carousel-caption">
+            <%= link_to "Upload Here", edit_listing_path(@listing), :class=>"btn btn-primary btn-lg" %>
+          </div>
+        <% else %>
+          <%= cl_image_tag @listing.sub_image_one, :width=>1920, :height=>920, :crop=>:scale %>
+        <% end %>
+      </div>
+
+      <div class="item">
+       <% if @listing.read_attribute(:sub_image_two).nil? %>
+          <%= cl_image_tag ("no-image-found.jpg"), :width=>1920, :height=>920, :crop=>:scale %>
+          <div class="carousel-caption">
+            <%= link_to "Upload Here", edit_listing_path(@listing), :class=>"btn btn-primary btn-lg" %>
+          </div>
+        <% else %>
+          <%= cl_image_tag @listing.sub_image_two, :width=>1920, :height=>920, :crop=>:scale %>
         <% end %>
       </div>
     </div>
 
-    <div class="col-md-7" style="font-size: 16px">
-      <table>
-        <tr>
-          <th style="width:120px">
-            <h2>Title</h2>
-          </th>
-          <th>
-            <h2>:</h2>
-          </th>
-          <td style="width:550px">
-            <h2><%= @listing.title %> </h2>
-          </td>
-        </tr>
-        <tr>
-          <th style="width:120px">
-            <strong>Home Type</strong>
-          </th>
-          <th>:</th>
-          <td style="width:550px">
-            <%= @listing.home_type %>
-          </td>
-        </tr>
+    <!-- Controls -->
+    <a class="left carousel-control" href="#listing-page" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#listing-page" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 
-        <tr>
-          <th style="width:120px">
-          	<strong>Room Type</strong>
-          </th>
-          <th>:</th>
-          <td style="width:550px">
-            <%= @listing.room_type %>
-          </td>
-        </tr>
-
-        <tr>
-          <th style="width:120px">
-          	<strong>Accomodate</strong>
-          </th>
-          <th>:</th>
-          <td style="width:550px">
-            <%= @listing.accomodate %>
-          </td>
-        </tr>
-
-        <tr>
-          <th style="width:120px">
-          	<strong>Location</strong>
-          </th>
-          <th>:</th>
-          <td style="width:550px">
-            <%= @listing.location %>
-          </td>
-        </tr>
-
-        <tr>
-          <th style="width:120px">
-            <strong>City, State</strong>
-          </th>
-          <th>:</th>
-          <td style="width:550px">
-            <%= @listing.city_state %>
-          </td>
-        </tr>
-
-        <tr>
-          <th style="width:120px">
-            <strong>Country</strong>
-          </th>
-          <th>:</th>
-          <td style="width:550px">
-            <%= @listing.country %>
-          </td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="col-md-12", style="border-top: groove; border-bottom: groove">
-      <center>
-        <h3>Approx. Location: </h3>
-        <p>
-          <%= image_tag "http://maps.google.com/maps/api/staticmap?size=640x450&maptype=roadmap&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" %>
-        </p>
-      </center>
-
-      <h3>Listing Nearby</h3>
-      <ul>
-        <% unless @listing.nearbys(100).empty? %>
-          <% for location in @listing.nearbys(100) %>
-            <div class="col-md-3" style="height: 35px">
-              <li><%= link_to location.title, location %> (<%= location.distance.round(2) %> km)</li>
+  <div class="container">
+    <div class="row">    
+      <div class="col-md-7">
+        <div class="listing-header-wrapper">
+          <div class="host-intro">
+            <em>Host Details: </em>
+          </div>
+          <div class="host-details">
+            <em><%= link_to @listing.user.name, @listing.user %></em><%= cl_image_tag(avatar_url(@listing.user), :fetch_format=>:png, :width=>50, :height=>50, :crop=>:thumb, :radius=>:max, :style => "margin-bottom: 8px; margin-left: 30px") %>
+          </div>
+          <div class="list-intro">
+            <em>About this listing: </em>
+          </div>
+          <div class="list-description">
+            <%= @listing.description%>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5" style="margin-top: 12px">
+        <div class="price-style">
+          <table>
+            <td style="width:200px">
+              <strong>RM </strong><%= @listing.price %><span><strong>Per Night</strong></span>
+            </td>
+          </table>
+          <% if user_signed_in? && @listing.user_id != current_user.id %>
+            <div id= "box"></div>
+              <p>
+                <%= link_to "Booking", new_listing_reservation_path(@listing), id: "new_booking", remote: true, :class => "btn btn-primary", :style => "width: 200px" %>
+              </p>
             </div>
+          <% elsif user_signed_in? && @listing.user_id == current_user.id %>
+            <strong>You can view your bookings <%= link_to "here", user_path(current_user.id) %></strong>
+          <% else %>
+            <p>
+              <strong>Interested? <%= link_to "Sign in", new_user_session_path %> to book now!</strong>
+            </p>
           <% end %>
+        </div>
+      </div>
+
+      <div class="col-md-7" style="font-size: 16px">
+        <table>
+          <tr>
+            <th style="width:120px">
+              <h2>Title</h2>
+            </th>
+            <th>
+              <h2>:</h2>
+            </th>
+            <td style="width:550px">
+              <h2><%= @listing.title %> </h2>
+            </td>
+          </tr>
+          <tr>
+            <th style="width:120px">
+              <strong>Home Type</strong>
+            </th>
+            <th>:</th>
+            <td style="width:550px">
+              <%= @listing.home_type %>
+            </td>
+          </tr>
+
+          <tr>
+            <th style="width:120px">
+            	<strong>Room Type</strong>
+            </th>
+            <th>:</th>
+            <td style="width:550px">
+              <%= @listing.room_type %>
+            </td>
+          </tr>
+
+          <tr>
+            <th style="width:120px">
+            	<strong>Accomodate</strong>
+            </th>
+            <th>:</th>
+            <td style="width:550px">
+              <%= @listing.accomodate %>
+            </td>
+          </tr>
+
+          <tr>
+            <th style="width:120px">
+            	<strong>Location</strong>
+            </th>
+            <th>:</th>
+            <td style="width:550px">
+              <%= @listing.location %>
+            </td>
+          </tr>
+
+          <tr>
+            <th style="width:120px">
+              <strong>City, State</strong>
+            </th>
+            <th>:</th>
+            <td style="width:550px">
+              <%= @listing.city_state %>
+            </td>
+          </tr>
+
+          <tr>
+            <th style="width:120px">
+              <strong>Country</strong>
+            </th>
+            <th>:</th>
+            <td style="width:550px">
+              <%= @listing.country %>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="col-md-12", style="border-top: groove; border-bottom: groove">
+        <center>
+          <h3>Approx. Location: </h3>
+          <p>
+            <%= image_tag "http://maps.google.com/maps/api/staticmap?size=640x450&maptype=roadmap&zoom=16&markers=#{@listing.latitude}%2C#{@listing.longitude}" %>
+          </p>
+        </center>
+
+        <h3>Listing Nearby</h3>
+        <ul>
+          <% unless @listing.nearbys(100).empty? %>
+            <% for location in @listing.nearbys(100) %>
+              <div class="col-md-3" style="height: 35px">
+                <li><%= link_to location.title, location %> (<%= location.distance.round(2) %> km)</li>
+              </div>
+            <% end %>
+          <% else %>
+            <li>No listing within 100km, do you have any? <%= link_to "Post", new_listing_path %> it out now!</li>
+          <% end%>
+        </ul>
+      </div>
+
+      <div class="col-md-12">
+        <h2>Comment: </h2>
+
+        <p>
+          <%= render @listing.comments %>
+        </p>
+
+        <% if user_signed_in? %>
+        	<h3>Add a comment:</h3>
+        	
+        	<p>
+        		<%= render 'comments/form' %>
+        	</p>
         <% else %>
-          <li>No listing within 100km, do you have any? <%= link_to "Post", new_listing_path %> it out now!</li>
-        <% end%>
-      </ul>
-    </div>
+          <p>
+          	<strong>You must <%= link_to "sign in", new_user_session_path %> to write a comment</strong>
+          </p>
+        <% end %>
 
-    <div class="col-md-12">
-      <h2>Comment: </h2>
+        <% if user_signed_in? && @listing.user_id == current_user.id %>
+          <p>
+          	<%= link_to "<span class=\"fa fa-pencil\"></span> Edit Listing".html_safe, edit_listing_path(@listing) %> |
 
-      <p>
-        <%= render @listing.comments %>
-      </p>
+            <%= link_to "<span class=\"fa fa-trash\"></span> Delete Listing".html_safe, listing_path(@listing), method: :delete, data: { confirm: "Are you sure you want to delete '#{@listing.title}'?"} %>
+          </p>
+        <% end %>
 
-      <% if user_signed_in? %>
-      	<h3>Add a comment:</h3>
-      	
-      	<p>
-      		<%= render 'comments/form' %>
-      	</p>
-      <% else %>
-        <p>
-        	<strong>You must <%= link_to "sign in", new_user_session_path %> to write a comment</strong>
-        </p>
-      <% end %>
-
-      <% if user_signed_in? && @listing.user_id == current_user.id %>
-        <p>
-        	<%= link_to "<span class=\"fa fa-pencil\"></span> Edit Listing".html_safe, edit_listing_path(@listing) %> |
-
-          <%= link_to "<span class=\"fa fa-trash\"></span> Delete Listing".html_safe, listing_path(@listing), method: :delete, data: { confirm: "Are you sure you want to delete '#{@listing.title}'?"} %>
-        </p>
-      <% end %>
-
-      <%= link_to "<span class=\"fa fa-hand-o-left\"></span> Back".html_safe, listings_path %>
+        <%= link_to "<span class=\"fa fa-hand-o-left\"></span> Back".html_safe, listings_path %>
+      </div>
     </div>
   </div>
-</div>
+</body>
