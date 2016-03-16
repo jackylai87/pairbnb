@@ -20,7 +20,7 @@
 			<h3><%= @error %></h3>
 		<% end %>
 		<% @listings.each do |listing| %>
-			<div class="col-md-4">
+			<div class="col-md-4 col-sm-6">
 				<% if listing.read_attribute(:main_image).nil? %>
         	<%= link_to (cl_image_tag ("no-image-found.jpg"), :width=>300, :height=>300, :crop=>:scale), listing %>
         <% else %>
