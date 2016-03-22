@@ -1,15 +1,13 @@
 <div class="container">
-	<div class="row">
-		<div class="tagging">
-			<div id="tag_cloud">
-				<%= form_tag ('/tags'), method: :get do %>
-				  <% tag_cloud Listing.tag_counts, %w[s m l] do |tag, css_class| %>
-				  	<%= check_box_tag "#{tag.id}".to_sym, tag.name, false, {:multiple => true} %>
-				  	<%= label_tag (tag.name) %>
-				  <% end %>
-				  <%= submit_tag value="Tagging Search", class: "btn btn-default" %>
+	<div class="tagging">
+		<div id="tag_cloud">
+			<%= form_tag ('/tags'), method: :get do %>
+			  <% tag_cloud Listing.tag_counts, %w[s m l] do |tag, css_class| %>
+			  	<%= check_box_tag "#{tag.id}".to_sym, tag.name, false, {:multiple => true} %>
+			  	<%= label_tag (tag.name) %>
 			  <% end %>
-			</div>
+			  <%= submit_tag value="Tagging Search", class: "btn btn-default" %>
+		  <% end %>
 		</div>
 	</div>
 </div>
